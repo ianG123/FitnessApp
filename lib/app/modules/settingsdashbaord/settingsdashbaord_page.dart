@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:prototype/app/modules/businesstab/businessgroup.dart';
 import 'package:prototype/app/modules/businesstab/businesstab_page.dart';
+import 'package:prototype/app/modules/grouptab/grouptab_page.dart';
 import 'settingsdashbaord_controller.dart';
+import 'locationtab.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 
@@ -70,11 +73,11 @@ class _SettingsdashbaordPageState
                         title: "Business",
                         icon: Icons.account_balance,
                         warna: Colors.blue),
-                    MyMenu(
+                    GroupTab(
                         title: "Groups",
                         icon: Icons.people_alt_rounded,
                         warna: Colors.blue),
-                    MyMenu(
+                    Locationpage(
                         title: "Default Units",
                         icon: Icons.straighten_rounded,
                         warna: Colors.blue),
@@ -82,11 +85,11 @@ class _SettingsdashbaordPageState
                         title: "Upgrade to Company Account",
                         icon: Icons.account_tree_rounded,
                         warna: Colors.blue),
-                    MyMenu(
+                    Locationpage(
                         title: "Date Format",
                         icon: Icons.date_range_rounded,
                         warna: Colors.blue),
-                    MyMenu(
+                    Locationpage(
                         title: "Location Settings",
                         icon: Icons.location_on_rounded,
                         warna: Colors.blue),
@@ -339,6 +342,70 @@ class Businesstab extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (context) => BusinesstabPage()),
                         );
+        },
+        splashColor: Colors.blue[50],
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(icon, size: 70.0, color: warna),
+              Text(title, style: new TextStyle(fontSize: 17.0)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class GroupTab extends StatelessWidget {
+  GroupTab({this.title, this.icon, this.warna});
+
+  final String title;
+  final IconData icon;
+  final MaterialColor warna;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => GrouptabPage()),
+          );
+        },
+        splashColor: Colors.blue[50],
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(icon, size: 70.0, color: warna),
+              Text(title, style: new TextStyle(fontSize: 17.0)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Locationpage extends StatelessWidget {
+  Locationpage({this.title, this.icon, this.warna});
+
+  final String title;
+  final IconData icon;
+  final MaterialColor warna;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () async {
+          final action = await Dialogs.yesAbortDialog(context, "title", "body");
         },
         splashColor: Colors.blue[50],
         child: Center(

@@ -1,37 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'businessgroup.dart';
-import 'businesstab_controller.dart';
+import 'package:prototype/app/modules/grouptab/terms.dart';
+import 'grouptab_controller.dart';
+import 'groups.dart';
+import 'locations.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 
-class BusinesstabPage extends StatefulWidget {
+class GrouptabPage extends StatefulWidget {
   final String title;
-  const BusinesstabPage({Key key, this.title = "Businesstab"})
-      : super(key: key);
+  const GrouptabPage({Key key, this.title = "Grouptab"}) : super(key: key);
 
   @override
-  _BusinesstabPageState createState() => _BusinesstabPageState();
+  _GrouptabPageState createState() => _GrouptabPageState();
 }
 
-class _BusinesstabPageState
-    extends ModularState<BusinesstabPage, BusinesstabController> {
+class _GrouptabPageState
+    extends ModularState<GrouptabPage, GrouptabController> {
   //use 'controller' variable to access controller
-
-  Businesstab one;
-  Widget currentPage;
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: business(context),
+      body: groups(context),
     );
   }
 
-  Widget business(context) {
+  Widget groups(context) {
     return Material(
       borderRadius: BorderRadius.all(Radius.circular(40)),
       elevation: 8,
@@ -49,7 +45,7 @@ class _BusinesstabPageState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Business',
+                    'Groups',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
@@ -67,31 +63,56 @@ class _BusinesstabPageState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Business Name',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GroupsPage()),
+                        );
+                      },
+                      child: Text(
+                        'Groups',
+                        style: TextStyle(
                           color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LocationsPage()),
+                        );
+                      },
+                      child: Text(
+                        'Locations',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
                         ),
                       ),
                     ),
                     SizedBox(height: 40),
-                    Text(
-                      'Upload Business Logo',
-                      style: TextStyle(
-                        fontSize: 18,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => TermsPage()),
+                        );
+                      },
+                      child: Text(
+                        'Terms',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    Icon(Icons.upload_outlined,
-                        color: Colors.grey[800],
-                        size: 100,
                     ),
                   ],
                 ),
@@ -171,60 +192,3 @@ class _BusinesstabPageState
   }
 }
 
-class MyMenu extends StatelessWidget {
-  MyMenu({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 17.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Businesstab extends StatelessWidget {
-  Businesstab({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {
-          
-        },
-        splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 17.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

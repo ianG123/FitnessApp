@@ -1,37 +1,85 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'businessgroup.dart';
-import 'businesstab_controller.dart';
+import 'grouptab_controller.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 
-class BusinesstabPage extends StatefulWidget {
+class LocationsPage extends StatefulWidget {
   final String title;
-  const BusinesstabPage({Key key, this.title = "Businesstab"})
-      : super(key: key);
+  const LocationsPage({Key key, this.title = "Grouptab"}) : super(key: key);
 
   @override
-  _BusinesstabPageState createState() => _BusinesstabPageState();
+  _LocationsPageState createState() => _LocationsPageState();
 }
 
-class _BusinesstabPageState
-    extends ModularState<BusinesstabPage, BusinesstabController> {
+class _LocationsPageState
+    extends ModularState<LocationsPage, GrouptabController> {
   //use 'controller' variable to access controller
+  List<Item> _data = generateItems(1);
 
-  Businesstab one;
-  Widget currentPage;
-
-
+  Widget _buildListPanel(){
+    return ExpansionPanelList(
+      expansionCallback: (int index, bool isExpanded){
+        setState(() {
+          _data[index].isExpanded = !isExpanded;
+        });
+      },
+      children: _data.map<ExpansionPanel>((Item item){
+        return ExpansionPanel(
+          headerBuilder: (BuildContext context, bool isExpanded){
+            return ListTile(
+              title: Text(item.headerValue),
+            );
+          },
+          body:Column(
+            children: [
+              ListTile(
+                  title:Text(item.expandedValue),
+                  trailing: Icon(Icons.delete),
+                  onTap:(){
+                    setState(() {
+                      _data.removeWhere((currentItem) => item == currentItem);
+                    });
+                  }
+              ),
+              Center(
+                child: InkWell(
+                  onTap: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Add SubLocation ',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      Icon(Icons.add_circle_outline, color: Colors.grey),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          isExpanded: item.isExpanded,
+        );
+      }).toList(),
+    );
+  }
+  //use 'controller' variable to access controller
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: business(context),
+      body: groups(context),
     );
   }
 
-  Widget business(context) {
+  Widget groups(context) {
     return Material(
       borderRadius: BorderRadius.all(Radius.circular(40)),
       elevation: 8,
@@ -49,7 +97,7 @@ class _BusinesstabPageState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Business',
+                    'Locations',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
@@ -67,32 +115,28 @@ class _BusinesstabPageState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Business Name',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Add Location ',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            Icon(Icons.add_circle_outline, color: Colors.grey),
+                          ],
                         ),
                       ),
                     ),
-                    SizedBox(height: 40),
-                    Text(
-                      'Upload Business Logo',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Icon(Icons.upload_outlined,
-                        color: Colors.grey[800],
-                        size: 100,
-                    ),
+                    SizedBox(height: 20),
+                    _buildListPanel(),
                   ],
                 ),
               ),
@@ -171,60 +215,20 @@ class _BusinesstabPageState
   }
 }
 
-class MyMenu extends StatelessWidget {
-  MyMenu({this.title, this.icon, this.warna});
+class Item {
+  String expandedValue;
+  String headerValue;
+  bool isExpanded;
 
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
+  Item({this.expandedValue, this.headerValue, this.isExpanded = false});
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 17.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
 
-class Businesstab extends StatelessWidget {
-  Businesstab({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {
-          
-        },
-        splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 17.0)),
-            ],
-          ),
-        ),
-      ),
+List<Item>generateItems(int numberOfItems){
+  return List.generate(numberOfItems, (index){
+    return Item(
+        headerValue: 'Washington',
+        expandedValue: 'Washington DC'
     );
-  }
+  });
 }

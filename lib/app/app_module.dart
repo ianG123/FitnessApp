@@ -9,6 +9,7 @@ import 'package:prototype/app/modules/home/home_module.dart';
 import 'modules/batteriesdashboard/batteriesdashboard_controller.dart';
 import 'modules/businesstab/businesstab_controller.dart';
 import 'modules/clientdashboard/clientdashboard_controller.dart';
+import 'modules/grouptab/grouptab_controller.dart';
 import 'modules/homedashboard/homedashboard_controller.dart';
 import 'modules/login/login_controller.dart';
 import 'modules/restorepasword/restorepasword_controller.dart';
@@ -18,6 +19,7 @@ import 'modules/signup/signup_controller.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => GrouptabController()),
         Bind((i) => BusinesstabController()),
         Bind((i) => BatteriesdashboardController()),
         Bind((i) => ClientdashboardController()),

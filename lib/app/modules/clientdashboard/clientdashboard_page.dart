@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:prototype/app/modules/clientdashboard/viewClient.dart';
+import 'addclient.dart';
 import 'clientdashboard_controller.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
@@ -49,6 +51,18 @@ class _ClientdashboardPageState
     screenWidth = size.width;
     return Scaffold(
       backgroundColor: backgroundColor,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 110),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddClient()),
+            );
+          },
+        ),
+      ),
       body: Stack(
         children: <Widget>[
           menu(context),
@@ -390,7 +404,12 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ViewClient()),
+          );
+        },
         splashColor: Colors.blue[50],
         child: Center(
           child: Column(
