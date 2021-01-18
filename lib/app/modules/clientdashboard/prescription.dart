@@ -5,20 +5,21 @@ import 'package:prototype/app/modules/batteriesdashboard/selectTest.dart';
 import 'FormsDate.dart';
 import 'clientdashboard_controller.dart';
 import 'editClient.dart';
+import 'prescriptiondate.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
 
-class FormsPage extends StatefulWidget {
+class PrescriptionPage extends StatefulWidget {
   final String title;
-  const FormsPage({Key key, this.title = "Businesstab"}) : super(key: key);
+  const PrescriptionPage({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _FormsPageState createState() => _FormsPageState();
+  _PrescriptionPageState createState() => _PrescriptionPageState();
 }
 
-class _FormsPageState
-    extends ModularState<FormsPage, ClientdashboardController> {
+class _PrescriptionPageState
+    extends ModularState<PrescriptionPage, ClientdashboardController> {
   //use 'controller' variable to access controller
   SingingCharacter _character = SingingCharacter.lafayette;
   @override
@@ -59,7 +60,7 @@ class _FormsPageState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Forms',
+                    'Prescription',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
@@ -112,23 +113,23 @@ class _FormsPageState
                   children: <Widget>[
                     MyMenu(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.support ,
                         warna: Colors.blue),
                     MyMenutwo(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.support ,
                         warna: Colors.blue),
                     MyMenuthree(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.support ,
                         warna: Colors.blue),
                     MyMenufour(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.support ,
                         warna: Colors.blue),
                     MyMenufive(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.support ,
                         warna: Colors.blue),
                   ],
                 ),
@@ -223,7 +224,7 @@ class MyMenu extends StatelessWidget {
         onTap: () {
           Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => FormsDate()),
+                          MaterialPageRoute(builder: (context) => PrescriptionD()),
                         );
         },
         splashColor: Colors.blue[50],

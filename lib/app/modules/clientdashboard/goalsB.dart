@@ -1,30 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:prototype/app/modules/batteriesdashboard/selectTest.dart';
+import 'package:prototype/app/modules/clientdashboard/goalsA.dart';
+import 'package:prototype/app/modules/clientdashboard/goalsC.dart';
 
 import 'clientdashboard_controller.dart';
 import 'editClient.dart';
-import 'goalsB.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
 
-class GoalsA extends StatefulWidget {
+class GoalsB extends StatefulWidget {
   final String title;
-  const GoalsA({Key key, this.title = "Businesstab"}) : super(key: key);
+  const GoalsB({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _GoalsAState createState() => _GoalsAState();
+  _GoalsBState createState() => _GoalsBState();
 }
 
-class _GoalsAState
-    extends ModularState<GoalsA, ClientdashboardController> {
+class _GoalsBState
+    extends ModularState<GoalsB, ClientdashboardController> {
   //use 'controller' variable to access controller
   SingingCharacter _character = SingingCharacter.lafayette;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 110),
+        child: FloatingActionButton(
+          child: Icon(Icons.edit ),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => GoalsC()),
+            );
+          },
+        ),
+      ),
       body: groups(context),
     );
   }
@@ -55,17 +68,17 @@ class _GoalsAState
                   ),
                   InkWell(
                       child: Text(
-                        'Save',
+                        'Update',
                         style: TextStyle(
-                            color: Colors.blue,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold
                         ),
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => GoalsB()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => SelectTest()),
+                        // );
                       }),
                 ]),
             SizedBox(height: 10),
@@ -78,7 +91,7 @@ class _GoalsAState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20),
-                     Container(
+                    Container(
                        width: 350,
                         height:40,
                         padding: EdgeInsets.all(8),
@@ -170,7 +183,7 @@ class _GoalsAState
                       ),
                     ],
                   ),
-                  Column(
+                 Column(
                         children: [
                           IconButton(
                             icon: Icon(Icons.people_alt_rounded),

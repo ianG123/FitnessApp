@@ -324,22 +324,22 @@ class _EditClientState
                     ],
                   ),
                   Column(
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.settings),
-                        color: Colors.white,
-                        iconSize: 36,
-                        onPressed: () {},
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.people_alt_rounded),
+                            color: Colors.white,
+                            iconSize: 36,
+                            onPressed: () {},
+                          ),
+                          Text(
+                            'Clients',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Settings',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
                   Column(
                     children: [
                       IconButton(

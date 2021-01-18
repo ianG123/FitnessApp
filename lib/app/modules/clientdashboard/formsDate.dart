@@ -4,6 +4,7 @@ import 'package:prototype/app/modules/batteriesdashboard/selectTest.dart';
 
 import 'clientdashboard_controller.dart';
 import 'editClient.dart';
+import 'goalsA.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
@@ -24,18 +25,6 @@ class _FormsDateState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 110),
-        child: FloatingActionButton(
-          child: Icon(Icons.add ),
-          onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => EditClient()),
-            );
-          },
-        ),
-      ),
       body: dashboard(context),
     );
   }
@@ -58,50 +47,21 @@ class _FormsDateState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Forms',
+                    '09/14/2020 Forms',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 20,
                       color: Colors.grey[800],
                     ),
                   ),
                   InkWell(
-                      child: Text('Save',
+                      child: Text('Delete',
                       style:TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                         fontWeight: FontWeight.bold,
                       )),
                       onTap: () {}),
                 ]),
-            SizedBox(height: 30),
-            Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 320,
-                      child: Column(
-                        children: <Widget>[
-                          TextField(
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.search),
-                              labelText: 'Search',
-                              labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey,
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                    ),
-                    Icon(Icons.filter_list_alt , color: Colors.black),
-                  ],
-                ),
+            SizedBox(height: 93),
             Container(
               height: 600,
               child: Container(
@@ -110,23 +70,31 @@ class _FormsDateState
                   padding: EdgeInsets.only(top: 1),
                   children: <Widget>[
                     MyMenu(
-                        title: "09/14/2020",
+                        title: "Goals",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenutwo(
-                        title: "09/14/2020",
+                        title: "Curent Activity & Interests",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenuthree(
-                        title: "09/14/2020",
+                        title: "Current Diet",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
+                         Container(
+                        height:30,
+                        padding: EdgeInsets.all(8),
+                        color: Colors.blue,
+                        child: Text('Informed Consent',
+                            style:TextStyle(
+                              color: Colors.white,
+                            ))),
                     MyMenufour(
-                        title: "09/14/2020",
+                        title: "Fitness Testing Consent Form",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenufive(
-                        title: "09/14/2020",
+                        title: "Fitness Testing and Exercise Part",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                   ],
@@ -164,22 +132,22 @@ class _FormsDateState
                     ],
                   ),
                   Column(
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.edit),
-                        color: Colors.white,
-                        iconSize: 36,
-                        onPressed: () {},
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.people_alt_rounded),
+                            color: Colors.white,
+                            iconSize: 36,
+                            onPressed: () {},
+                          ),
+                          Text(
+                            'Clients',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Edit',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
                   Column(
                     children: [
                       IconButton(
@@ -219,13 +187,19 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GoalsA()),
+                        );
+        },
         splashColor: Colors.blue[50],
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -253,7 +227,8 @@ class MyMenutwo extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -280,7 +255,8 @@ class MyMenuthree extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -308,7 +284,8 @@ class MyMenufour extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -336,7 +313,8 @@ class MyMenufive extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),

@@ -1,42 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:prototype/app/modules/batteriesdashboard/selectTest.dart';
-
-import 'FormsDate.dart';
+import 'package:prototype/app/modules/batteriesdashboard/viewBattery.dart';
 import 'clientdashboard_controller.dart';
-import 'editClient.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
-enum SingingCharacter { lafayette, jefferson }
 
-class FormsPage extends StatefulWidget {
+class PrescriptionD extends StatefulWidget {
   final String title;
-  const FormsPage({Key key, this.title = "Businesstab"}) : super(key: key);
+  const PrescriptionD({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _FormsPageState createState() => _FormsPageState();
+  _PrescriptionDState createState() => _PrescriptionDState();
 }
 
-class _FormsPageState
-    extends ModularState<FormsPage, ClientdashboardController> {
+class _PrescriptionDState
+    extends ModularState<PrescriptionD, ClientdashboardController> {
   //use 'controller' variable to access controller
-  SingingCharacter _character = SingingCharacter.lafayette;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 110),
-        child: FloatingActionButton(
-          child: Icon(Icons.add ),
-          onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => EditClient()),
-            );
-          },
-        ),
-      ),
       body: dashboard(context),
     );
   }
@@ -59,82 +44,77 @@ class _FormsPageState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Forms',
+                    '09/14/2020 Prescription',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
                     ),
                   ),
                   InkWell(
-                      child: Text('Save',
+                      child: Text('Delete',
                       style:TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                         fontWeight: FontWeight.bold,
                       )),
                       onTap: () {}),
                 ]),
             SizedBox(height: 30),
-            Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 320,
-                      child: Column(
-                        children: <Widget>[
-                          TextField(
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.search),
-                              labelText: 'Search',
-                              labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey,
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                    ),
-                    Icon(Icons.filter_list_alt , color: Colors.black),
-                  ],
-                ),
             Container(
-              height: 600,
+              height: 650,
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: ListView(
                   padding: EdgeInsets.only(top: 1),
                   children: <Widget>[
+                    SizedBox(height:10),
+                    Container(
+                        height:30,
+                      padding: EdgeInsets.all(8),
+                      color: Colors.blue,
+                        child: Text('Diet Prescription',
+                        style:TextStyle(
+                          color: Colors.white,
+                        ))),
+                    SizedBox(height:10),
                     MyMenu(
-                        title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        title: "Estimated Calorie Requirements",
+                        icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenutwo(
-                        title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        title: "Calories & Macronutrients",
+                        icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenuthree(
-                        title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        title: "Food Exchange",
+                        icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
+                        MyMenuthree(
+                        title: "Activity & Meal Plan",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    SizedBox(height:15),
+                    Container(
+                        height:30,
+                        padding: EdgeInsets.all(8),
+                        color: Colors.blue,
+                        child: Text('Exercise Prescription',
+                            style:TextStyle(
+                              color: Colors.white,
+                            ))),
+                    SizedBox(height:15),
                     MyMenufour(
-                        title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        title: "Exercise Calories Burned",
+                        icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenufive(
-                        title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        title: "Steps to Distance Converter",
+                        icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 4),
+            SizedBox(height: 13),
             Container(
               height: 80.5,
               width: double.maxFinite,
@@ -165,29 +145,34 @@ class _FormsPageState
                     ],
                   ),
                   Column(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.people_alt_rounded),
-                            color: Colors.white,
-                            iconSize: 36,
-                            onPressed: () {},
-                          ),
-                          Text(
-                            'Clients',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                            ),
-                          ),
-                        ],
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        color: Colors.white,
+                        iconSize: 36,
+                        onPressed: () {},
                       ),
+                      Text(
+                        'Edit',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
                   Column(
                     children: [
                       IconButton(
                         icon: Icon(Icons.visibility),
                         color: Colors.white,
                         iconSize: 36,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ViewBattery()),
+                          );
+                        },
                       ),
                       Text(
                         'View',
@@ -220,22 +205,14 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => FormsDate()),
-                        );
-        },
+        onTap: () {},
         splashColor: Colors.blue[50],
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
+              Icon(icon, size: 70.0, color: warna),
               Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
             ],
           ),
         ),
@@ -262,11 +239,8 @@ class MyMenutwo extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
+              Icon(icon, size: 70.0, color: warna),
               Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
             ],
           ),
         ),
@@ -292,11 +266,8 @@ class MyMenuthree extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
+              Icon(icon, size: 70.0, color: warna),
               Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
             ],
           ),
         ),
@@ -323,11 +294,8 @@ class MyMenufour extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
+              Icon(icon, size: 70.0, color: warna),
               Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
             ],
           ),
         ),
@@ -354,11 +322,8 @@ class MyMenufive extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
+              Icon(icon, size: 70.0, color: warna),
               Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
             ],
           ),
         ),

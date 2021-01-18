@@ -9,16 +9,16 @@ import 'goalsB.dart';
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
 
-class GoalsA extends StatefulWidget {
+class GoalsC extends StatefulWidget {
   final String title;
-  const GoalsA({Key key, this.title = "Businesstab"}) : super(key: key);
+  const GoalsC({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _GoalsAState createState() => _GoalsAState();
+  _GoalsCState createState() => _GoalsCState();
 }
 
-class _GoalsAState
-    extends ModularState<GoalsA, ClientdashboardController> {
+class _GoalsCState
+    extends ModularState<GoalsC, ClientdashboardController> {
   //use 'controller' variable to access controller
   SingingCharacter _character = SingingCharacter.lafayette;
   @override
@@ -55,7 +55,7 @@ class _GoalsAState
                   ),
                   InkWell(
                       child: Text(
-                        'Save',
+                        'Update',
                         style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.bold
@@ -78,7 +78,7 @@ class _GoalsAState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20),
-                     Container(
+                    Container(
                        width: 350,
                         height:40,
                         padding: EdgeInsets.all(8),

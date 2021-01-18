@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:prototype/app/modules/batteriesdashboard/selectTest.dart';
 import 'package:prototype/app/modules/clientdashboard/Forms.dart';
+import 'package:prototype/app/modules/clientdashboard/assessment.dart';
 
 import 'clientdashboard_controller.dart';
 import 'editClient.dart';
+import 'prescription.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
@@ -103,6 +105,7 @@ class _ViewClientState
                       ),
                     ),
                     Text('Male'),
+                     SizedBox(height: 2),
                     Row(
                       children: <Widget>[
                         Container(
@@ -116,16 +119,24 @@ class _ViewClientState
                         ),
                       ],
                     ),
+                     SizedBox(height: 2),
                     Text('662-754-8357'),
+                    SizedBox(height: 2),
                     Text('johnrobbert@gmail.com'),
+                    SizedBox(height: 2),
                     Text('345 Elm St.'),
+                    SizedBox(height: 2),
                     Text('Kansas City'),
+                    SizedBox(height: 2),
                     Text('MO 66715'),
+                    SizedBox(height: 2),
                     Text('Main Group'),
+                    SizedBox(height: 2),
                     Text('Sub Group'),
+                    SizedBox(height: 2),
                     Text('Location'),
                     Container(
-              height: 334.1,
+              height: 315,
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: ListView(
@@ -135,11 +146,11 @@ class _ViewClientState
                         title: "Forms",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
-                        MyMenu(
+                        MyMenutwo(
                         title: "Assesments",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
-                        MyMenu(
+                        MyMenuThree(
                         title: "Prescription",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
@@ -155,6 +166,72 @@ class _ViewClientState
             ),
             Botnav(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyMenuThree extends StatelessWidget {
+  MyMenuThree({this.title, this.icon, this.warna});
+
+  final String title;
+  final IconData icon;
+  final MaterialColor warna;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PrescriptionPage()),
+                        );
+        },
+        splashColor: Colors.blue[50],
+        child: Container(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(icon, size: 70.0, color: warna),
+              Text(title, style: new TextStyle(fontSize: 14.0)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyMenutwo extends StatelessWidget {
+  MyMenutwo({this.title, this.icon, this.warna});
+
+  final String title;
+  final IconData icon;
+  final MaterialColor warna;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AssessmentPage()),
+                        );
+        },
+        splashColor: Colors.blue[50],
+        child: Container(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(icon, size: 70.0, color: warna),
+              Text(title, style: new TextStyle(fontSize: 14.0)),
+            ],
+          ),
         ),
       ),
     );
@@ -232,22 +309,22 @@ class _BotnavState extends State<Botnav> {
                     ],
                   ),
                   Column(
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.settings),
-                        color: Colors.white,
-                        iconSize: 36,
-                        onPressed: () {},
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.people_alt_rounded),
+                            color: Colors.white,
+                            iconSize: 36,
+                            onPressed: () {},
+                          ),
+                          Text(
+                            'Clients',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Settings',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
                   Column(
                     children: [
                       IconButton(

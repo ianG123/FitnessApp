@@ -9,16 +9,16 @@ import 'editClient.dart';
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
 
-class FormsPage extends StatefulWidget {
+class AssessmentPage extends StatefulWidget {
   final String title;
-  const FormsPage({Key key, this.title = "Businesstab"}) : super(key: key);
+  const AssessmentPage({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _FormsPageState createState() => _FormsPageState();
+  _AssessmentPageState createState() => _AssessmentPageState();
 }
 
-class _FormsPageState
-    extends ModularState<FormsPage, ClientdashboardController> {
+class _AssessmentPageState
+    extends ModularState<AssessmentPage, ClientdashboardController> {
   //use 'controller' variable to access controller
   SingingCharacter _character = SingingCharacter.lafayette;
   @override
@@ -59,7 +59,7 @@ class _FormsPageState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Forms',
+                    'Assessments',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
@@ -100,7 +100,7 @@ class _FormsPageState
                         ],
                       ),
                     ),
-                    Icon(Icons.filter_list_alt , color: Colors.black),
+                    Icon(Icons.filter_list_alt , color: Colors.white),
                   ],
                 ),
             Container(
@@ -112,23 +112,23 @@ class _FormsPageState
                   children: <Widget>[
                     MyMenu(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.assignment_outlined,
                         warna: Colors.blue),
                     MyMenutwo(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.assignment_outlined,
                         warna: Colors.blue),
                     MyMenuthree(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.assignment_outlined,
                         warna: Colors.blue),
                     MyMenufour(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.assignment_outlined,
                         warna: Colors.blue),
                     MyMenufive(
                         title: "09/14/2020",
-                        icon: Icons.folder_open_outlined,
+                        icon: Icons.assignment_outlined,
                         warna: Colors.blue),
                   ],
                 ),
@@ -231,11 +231,16 @@ class MyMenu extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              
               Icon(icon, size: 60.0, color: warna),
               SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -262,11 +267,16 @@ class MyMenutwo extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+               
               Icon(icon, size: 60.0, color: warna),
               SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -292,11 +302,16 @@ class MyMenuthree extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+               
               Icon(icon, size: 60.0, color: warna),
               SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -323,11 +338,16 @@ class MyMenufour extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              
               Icon(icon, size: 60.0, color: warna),
               SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -354,11 +374,16 @@ class MyMenufive extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
+               
+             Icon(icon, size: 60.0, color: warna),
               SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(width: 140,),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
