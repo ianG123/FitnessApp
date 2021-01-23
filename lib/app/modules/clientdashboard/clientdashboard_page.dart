@@ -425,7 +425,7 @@ class MyMenu extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 5),
-              Text('John Robert', style: new TextStyle(fontSize: 17.0)),
+              Text('John RobeRt', style: new TextStyle(fontSize: 17.0)),
               SizedBox(height: 5),
               Text('Primary Group', style: new TextStyle(fontSize: 10.0)),
             ],

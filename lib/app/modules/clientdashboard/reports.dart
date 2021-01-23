@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:prototype/app/modules/batteriesdashboard/viewBattery.dart';
-import 'package:prototype/app/modules/clientdashboard/estimateCal.dart';
+import 'package:prototype/app/modules/clientdashboard/textReport.dart';
+
+// import 'batteriesdashboard_controller.dart';
+// import 'bodycomposition.dart';
+// import 'circumference.dart';
+import 'chart.dart';
+import 'chartComparison.dart';
 import 'clientdashboard_controller.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 
-class PrescriptionD extends StatefulWidget {
+class Reports extends StatefulWidget {
   final String title;
-  const PrescriptionD({Key key, this.title = "Businesstab"}) : super(key: key);
+  const Reports({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _PrescriptionDState createState() => _PrescriptionDState();
+  _ReportsState createState() => _ReportsState();
 }
 
-class _PrescriptionDState
-    extends ModularState<PrescriptionD, ClientdashboardController> {
+class _ReportsState
+    extends ModularState<Reports, ClientdashboardController> {
   //use 'controller' variable to access controller
 
 
@@ -45,77 +50,46 @@ class _PrescriptionDState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    '09/14/2020 Prescription',
+                    'Reports',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
                     ),
                   ),
-                  InkWell(
-                      child: Text('Delete',
-                      style:TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      )),
-                      onTap: () {}),
+                  Icon(Icons.toc_outlined, color: Colors.white),
                 ]),
             SizedBox(height: 30),
+            Text(
+                'Test Battery',
+              style: TextStyle(
+                fontSize: 15,
+              ),
+            ),
             Container(
-              height: 650,
+              height: 600,
               child: Container(
-                padding: EdgeInsets.all(10.0),
-                child: ListView(
+                padding: EdgeInsets.all(30.0),
+                child: GridView.count(
                   padding: EdgeInsets.only(top: 1),
+                  crossAxisCount: 2,
                   children: <Widget>[
-                    SizedBox(height:10),
-                    Container(
-                        height:30,
-                      padding: EdgeInsets.all(8),
-                      color: Colors.blue,
-                        child: Text('Diet Prescription',
-                        style:TextStyle(
-                          color: Colors.white,
-                        ))),
-                    SizedBox(height:10),
                     MyMenu(
-                        title: "Estimated Calorie Requirements",
+                        title: "Chart Report",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenutwo(
-                        title: "Calories & Macronutrients",
+                        title: "Comparison Report",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                     MyMenuthree(
-                        title: "Food Exchange",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
-                        MyMenuthree(
-                        title: "Activity & Meal Plan",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
-                    SizedBox(height:15),
-                    Container(
-                        height:30,
-                        padding: EdgeInsets.all(8),
-                        color: Colors.blue,
-                        child: Text('Exercise Prescription',
-                            style:TextStyle(
-                              color: Colors.white,
-                            ))),
-                    SizedBox(height:15),
-                    MyMenufour(
-                        title: "Exercise Calories Burned",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
-                    MyMenufive(
-                        title: "Steps to Distance Converter",
+                        title: "Text Report",
                         icon: Icons.blur_circular_outlined,
                         warna: Colors.blue),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 13),
+            SizedBox(height: 45),
             Container(
               height: 80.5,
               width: double.maxFinite,
@@ -131,13 +105,13 @@ class _PrescriptionDState
                   Column(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.home),
+                        icon: Icon(Icons.view_module),
                         color: Colors.white,
                         iconSize: 36,
                         onPressed: () {},
                       ),
                       Text(
-                        'Home',
+                        'Add',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,
@@ -146,34 +120,29 @@ class _PrescriptionDState
                     ],
                   ),
                   Column(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.people_alt_rounded),
-                            color: Colors.white,
-                            iconSize: 36,
-                            onPressed: () {},
-                          ),
-                          Text(
-                            'Clients',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                            ),
-                          ),
-                        ],
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        color: Colors.white,
+                        iconSize: 36,
+                        onPressed: () {},
                       ),
+                      Text(
+                        'Edit',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
                   Column(
                     children: [
                       IconButton(
                         icon: Icon(Icons.visibility),
                         color: Colors.white,
                         iconSize: 36,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => ViewBattery()),
-                          );
-                        },
+                        onPressed: () {},
                       ),
                       Text(
                         'View',
@@ -207,14 +176,14 @@ class MyMenu extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-           Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => EstimateCal()),
-                        );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChartsDemo()),
+          );
         },
         splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
+        child: Center(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -239,10 +208,15 @@ class MyMenutwo extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChartComparison()),
+          );
+        },
         splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
+        child: Center(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -266,66 +240,15 @@ class MyMenuthree extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+           Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TextReport()),
+          );
+        },
         splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufour extends StatelessWidget {
-  MyMenufour({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufive extends StatelessWidget {
-  MyMenufive({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
+        child: Center(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),

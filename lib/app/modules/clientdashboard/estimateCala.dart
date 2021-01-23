@@ -9,22 +9,34 @@ import 'goalsB.dart';
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
 
-class GoalsA extends StatefulWidget {
+class EstimateCala extends StatefulWidget {
   final String title;
-  const GoalsA({Key key, this.title = "Businesstab"}) : super(key: key);
+  const EstimateCala({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _GoalsAState createState() => _GoalsAState();
+  _EstimateCalaState createState() => _EstimateCalaState();
 }
 
-class _GoalsAState
-    extends ModularState<GoalsA, ClientdashboardController> {
+class _EstimateCalaState
+    extends ModularState<EstimateCala, ClientdashboardController> {
   //use 'controller' variable to access controller
   SingingCharacter _character = SingingCharacter.lafayette;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 110),
+        child: FloatingActionButton(
+          child: Icon(Icons.edit),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditClient()),
+            );
+          },
+        ),
+      ),
       body: groups(context),
     );
   }
@@ -47,7 +59,7 @@ class _GoalsAState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Goals',
+                    'Estimate Calorie',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
@@ -57,9 +69,7 @@ class _GoalsAState
                       child: Text(
                         'Save',
                         style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold
-                        ),
+                            color: Colors.blue, fontWeight: FontWeight.bold),
                       ),
                       onTap: () {
                         Navigator.push(
@@ -78,71 +88,65 @@ class _GoalsAState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20),
-                     Container(
-                       width: 350,
-                        height:40,
-                        padding: EdgeInsets.all(8),
-                        color: Colors.blue,
-                        child: Text('Header',
-                            style:TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ))),
-                            SizedBox(height: 5),
-                            Text('Objectives'),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
-                        labelText: '',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Field'),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                               enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
+                              labelText: ' ',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(height: 5),
-                     Text('Outcome Goals'),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
-                        labelText: '',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                    SizedBox(height: 10),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Field'),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                               enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
+                              labelText: ' ',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Text('Behavioral Goals'),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
-                        labelText: '',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
+                      ],
                     ),
                     SizedBox(height: 1),
-                    
                     SizedBox(height: 1),
-                   
                   ],
                 ),
               ),
@@ -178,22 +182,22 @@ class _GoalsAState
                     ],
                   ),
                   Column(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.people_alt_rounded),
-                            color: Colors.white,
-                            iconSize: 36,
-                            onPressed: () {},
-                          ),
-                          Text(
-                            'Clients',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                            ),
-                          ),
-                        ],
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.people_alt_rounded),
+                        color: Colors.white,
+                        iconSize: 36,
+                        onPressed: () {},
                       ),
+                      Text(
+                        'Clients',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
                   Column(
                     children: [
                       IconButton(

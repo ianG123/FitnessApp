@@ -17,7 +17,8 @@ class HomedashboardPage extends StatefulWidget {
 }
 
 class _HomedashboardPageState
-    extends ModularState<HomedashboardPage, HomedashboardController> with SingleTickerProviderStateMixin {
+    extends ModularState<HomedashboardPage, HomedashboardController>
+    with SingleTickerProviderStateMixin {
   //use 'controller' variable to access controller
 
   bool isCollapsed = true;
@@ -313,13 +314,15 @@ class _HomedashboardPageState
                             iconSize: 36,
                             onPressed: () {
                               Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ClientdashboardPage()),
-                        );
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ClientdashboardPage()),
+                              );
                             },
                           ),
                           Text(
-                            'Clients',
+                            'ClientS',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -370,9 +373,9 @@ class MyMenu extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ClientdashboardPage()),
-                        );
+            context,
+            MaterialPageRoute(builder: (context) => ClientdashboardPage()),
+          );
         },
         splashColor: Colors.blue[50],
         child: Center(
@@ -402,10 +405,10 @@ class Settings extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-           Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SettingsdashbaordPage()),
-                        );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SettingsdashbaordPage()),
+          );
         },
         splashColor: Colors.blue[50],
         child: Center(
@@ -435,10 +438,10 @@ class Batteries extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-           Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => BatteriesdashboardPage()),
-                        );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BatteriesdashboardPage()),
+          );
         },
         splashColor: Colors.blue[50],
         child: Center(
@@ -454,4 +457,3 @@ class Batteries extends StatelessWidget {
     );
   }
 }
-

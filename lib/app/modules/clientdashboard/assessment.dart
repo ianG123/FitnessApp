@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:prototype/app/modules/batteriesdashboard/selectTest.dart';
+import 'package:prototype/app/modules/clientdashboard/chooseBatt.dart';
 
 import 'FormsDate.dart';
 import 'clientdashboard_controller.dart';
 import 'editClient.dart';
+import 'viewBattery.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
@@ -32,7 +34,7 @@ class _AssessmentPageState
           onPressed: (){
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditClient()),
+              MaterialPageRoute(builder: (context) => ChooseBatt()),
             );
           },
         ),
@@ -223,7 +225,7 @@ class MyMenu extends StatelessWidget {
         onTap: () {
           Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => FormsDate()),
+                          MaterialPageRoute(builder: (context) => ViewBatteryClient()),
                         );
         },
         splashColor: Colors.blue[50],

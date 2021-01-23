@@ -104,41 +104,134 @@ class _ViewClientState
                         ],
                       ),
                     ),
-                    Text('Male'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.people_alt_rounded),
+                          SizedBox(width: 2),
+                          Text('Male'),
+                        ],
+                      ),
+                      ],
+                    ),
                      SizedBox(height: 2),
                     Row(
                       children: <Widget>[
+                        Icon(Icons.date_range),
                         Container(
-                          width: 150,
+                          width: 137,
                           child: Text('12/12/1990')
                         ),
-                        SizedBox(width: 20),
+                        SizedBox(width: 10),
+                        Icon(Icons.date_range),
                         Container(
-                          width: 150,
+                          width: 137,
                           child: Text('25yr')
                         ),
                       ],
                     ),
                      SizedBox(height: 2),
-                    Text('662-754-8357'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.local_phone_rounded),
+                          SizedBox(width: 2),
+                          Text('662-754-8357'),
+                        ],
+                      ),
+                      ],
+                    ),
                     SizedBox(height: 2),
-                    Text('johnrobbert@gmail.com'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.email),
+                          SizedBox(width: 2),
+                          Text('johnrobbert@gmail.com'),
+                        ],
+                      ),
+                      ],
+                    ),
                     SizedBox(height: 2),
-                    Text('345 Elm St.'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.location_on_rounded),
+                          SizedBox(width: 2),
+                          Text('345 Elm St.'),
+                        ],
+                      ),
+                      ],
+                    ),
                     SizedBox(height: 2),
-                    Text('Kansas City'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.location_on_rounded),
+                          SizedBox(width: 2),
+                          Text('Kansas City'),
+                        ],
+                      ),
+                      ],
+                    ),
                     SizedBox(height: 2),
-                    Text('MO 66715'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.location_on_rounded),
+                          SizedBox(width: 2),
+                          Text('MO 66715'),
+                        ],
+                      ),
+                      ],
+                    ),
                     SizedBox(height: 2),
-                    Text('Main Group'),
+                    Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.people_alt_rounded),
+                          SizedBox(width: 2),
+                          Text('Main Group'),
+                        ],
+                      ),
+                      ],
+                    ),
+                    
                     SizedBox(height: 2),
-                    Text('Sub Group'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.people_alt_rounded),
+                          SizedBox(width: 2),
+                          Text('Sub Group'),
+                        ],
+                      ),
+                      ],
+                    ),
                     SizedBox(height: 2),
-                    Text('Location'),
+                     Column(
+                      children: [
+                      Row(
+                        children: [
+                          Icon(Icons.location_on_rounded),
+                          SizedBox(width: 2),
+                          Text('Location'),
+                        ],
+                      ),
+                      ],
+                    ),
                     Container(
-              height: 315,
+              height: 236,
               child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(0),
                 child: ListView(
                   padding: EdgeInsets.only(top: 1),
                   children: <Widget>[

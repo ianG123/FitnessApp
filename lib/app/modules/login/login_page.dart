@@ -5,6 +5,7 @@ import 'package:prototype/app/modules/homedashboard/homedashboard_page.dart';
 import 'package:prototype/app/modules/restorepasword/restorepasword_page.dart';
 import 'package:prototype/app/modules/settingsdashbaord/settingsdashbaord_page.dart';
 import 'package:prototype/app/modules/signup/signup_page.dart';
+import 'package:prototype/app/pages/home/home_page.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatefulWidget {
@@ -227,7 +228,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomedashboardPage()),
+                                      builder: (context) => HomePage()),
                                 );
                               }
                             : null,

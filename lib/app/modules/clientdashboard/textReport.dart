@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:prototype/app/modules/batteriesdashboard/viewBattery.dart';
-import 'package:prototype/app/modules/clientdashboard/estimateCal.dart';
+import 'package:prototype/app/modules/clientdashboard/reports.dart';
+
 import 'clientdashboard_controller.dart';
 
 final Color backgroundColor = Color(0xff3D73DD);
 
-class PrescriptionD extends StatefulWidget {
+class TextReport extends StatefulWidget {
   final String title;
-  const PrescriptionD({Key key, this.title = "Businesstab"}) : super(key: key);
+  const TextReport({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _PrescriptionDState createState() => _PrescriptionDState();
+  _TextReportState createState() => _TextReportState();
 }
 
-class _PrescriptionDState
-    extends ModularState<PrescriptionD, ClientdashboardController> {
+class _TextReportState
+    extends ModularState<TextReport, ClientdashboardController> {
   //use 'controller' variable to access controller
 
 
@@ -45,77 +45,182 @@ class _PrescriptionDState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    '09/14/2020 Prescription',
+                    'Text Report',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
                     ),
                   ),
                   InkWell(
-                      child: Text('Delete',
+                      child: Text('Result',
                       style:TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
                       )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Reports()),
+            );
+                      }),
                 ]),
-            SizedBox(height: 30),
+            SizedBox(height: 48),
+            
             Container(
-              height: 650,
+              height: 600,
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: ListView(
                   padding: EdgeInsets.only(top: 1),
                   children: <Widget>[
-                    SizedBox(height:10),
-                    Container(
-                        height:30,
-                      padding: EdgeInsets.all(8),
-                      color: Colors.blue,
-                        child: Text('Diet Prescription',
-                        style:TextStyle(
-                          color: Colors.white,
-                        ))),
-                    SizedBox(height:10),
-                    MyMenu(
-                        title: "Estimated Calorie Requirements",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
-                    MyMenutwo(
-                        title: "Calories & Macronutrients",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
-                    MyMenuthree(
-                        title: "Food Exchange",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
-                        MyMenuthree(
-                        title: "Activity & Meal Plan",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
                     SizedBox(height:15),
                     Container(
                         height:30,
                         padding: EdgeInsets.all(8),
                         color: Colors.blue,
-                        child: Text('Exercise Prescription',
+                        child: Text('Body Composition',
+                            style:TextStyle(
+                              color: Colors.white,
+                            ))),
+                    SizedBox(height:15),
+                    MyMenu(
+                        title: "Body Weight",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                        Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Weight(Lbs)'),
+                        ),
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
+                              labelText: '',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    MyMenutwo(
+                        title: "Jackson-Polluck 3-Pinch Body Fat",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                        Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Chest(mm)'),
+                        ),
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
+                              labelText: '',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Abdomen(mm)'),
+                        ),
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
+                              labelText: '',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Thigh(mm)'),
+                        ),
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
+                              labelText: '',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height:15),
+                    Container(
+                        height:30,
+                        padding: EdgeInsets.all(8),
+                        color: Colors.blue,
+                        child: Text('Circumference',
                             style:TextStyle(
                               color: Colors.white,
                             ))),
                     SizedBox(height:15),
                     MyMenufour(
-                        title: "Exercise Calories Burned",
-                        icon: Icons.blur_circular_outlined,
-                        warna: Colors.blue),
-                    MyMenufive(
-                        title: "Steps to Distance Converter",
-                        icon: Icons.blur_circular_outlined,
+                        title: "Notes",
                         warna: Colors.blue),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 13),
+            SizedBox(height: 45),
             Container(
               height: 80.5,
               width: double.maxFinite,
@@ -131,13 +236,13 @@ class _PrescriptionDState
                   Column(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.home),
+                        icon: Icon(Icons.view_module),
                         color: Colors.white,
                         iconSize: 36,
                         onPressed: () {},
                       ),
                       Text(
-                        'Home',
+                        'Add',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,
@@ -146,34 +251,29 @@ class _PrescriptionDState
                     ],
                   ),
                   Column(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.people_alt_rounded),
-                            color: Colors.white,
-                            iconSize: 36,
-                            onPressed: () {},
-                          ),
-                          Text(
-                            'Clients',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                            ),
-                          ),
-                        ],
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        color: Colors.white,
+                        iconSize: 36,
+                        onPressed: () {},
                       ),
+                      Text(
+                        'Edit',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
                   Column(
                     children: [
                       IconButton(
                         icon: Icon(Icons.visibility),
                         color: Colors.white,
                         iconSize: 36,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => ViewBattery()),
-                          );
-                        },
+                        onPressed: () {},
                       ),
                       Text(
                         'View',
@@ -206,12 +306,7 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-           Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => EstimateCal()),
-                        );
-        },
+        onTap: () {},
         splashColor: Colors.blue[50],
         child: Container(
           child: Row(

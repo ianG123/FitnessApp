@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:prototype/app/modules/batteriesdashboard/selectTest.dart';
+import 'package:prototype/app/modules/clientdashboard/estimateCala.dart';
 
 import 'clientdashboard_controller.dart';
 import 'editClient.dart';
@@ -9,22 +10,34 @@ import 'goalsB.dart';
 final Color backgroundColor = Color(0xff3D73DD);
 enum SingingCharacter { lafayette, jefferson }
 
-class GoalsA extends StatefulWidget {
+class EstimateCal extends StatefulWidget {
   final String title;
-  const GoalsA({Key key, this.title = "Businesstab"}) : super(key: key);
+  const EstimateCal({Key key, this.title = "Businesstab"}) : super(key: key);
 
   @override
-  _GoalsAState createState() => _GoalsAState();
+  _EstimateCalState createState() => _EstimateCalState();
 }
 
-class _GoalsAState
-    extends ModularState<GoalsA, ClientdashboardController> {
+class _EstimateCalState
+    extends ModularState<EstimateCal, ClientdashboardController> {
   //use 'controller' variable to access controller
   SingingCharacter _character = SingingCharacter.lafayette;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 110),
+        child: FloatingActionButton(
+          child: Icon(Icons.edit ),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EstimateCala()),
+            );
+          },
+        ),
+      ),
       body: groups(context),
     );
   }
@@ -47,7 +60,7 @@ class _GoalsAState
                           color: Colors.grey[800]),
                       onTap: () {}),
                   Text(
-                    'Goals',
+                    'Estimate Calorie',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.grey[800],
@@ -57,7 +70,7 @@ class _GoalsAState
                       child: Text(
                         'Save',
                         style: TextStyle(
-                            color: Colors.blue,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold
                         ),
                       ),
@@ -78,66 +91,122 @@ class _GoalsAState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20),
-                     Container(
-                       width: 350,
-                        height:40,
-                        padding: EdgeInsets.all(8),
-                        color: Colors.blue,
-                        child: Text('Header',
-                            style:TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ))),
-                            SizedBox(height: 5),
-                            Text('Objectives'),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
-                        labelText: '',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Field'),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Enter Value',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
+                      ],
+                    ),
+                    SizedBox(height: 1),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Field'),
+                        ),
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Enter Value',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      padding: EdgeInsets.only(right:50),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text('Weight(Lbs)'),
                       ),
                     ),
-                    SizedBox(height: 5),
-                     Text('Outcome Goals'),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
-                        labelText: '',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Chest(mm)'),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Enter Value',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(height: 5),
-                    Text('Behavioral Goals'),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey, width: 1.0),),
-                        labelText: '',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: 150,
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text('Abdoment(mm)'),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blue,
+                        SizedBox(width: 20),
+                        Container(
+                          width: 150,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Enter Value',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                     SizedBox(height: 1),
                     
