@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:prototype/app/modules/clientdashboard/addclient.dart';
+import 'package:prototype/app/modules/clientdashboard/viewClient.dart';
 import 'clients_controller.dart';
 
 class ClientsPage extends StatefulWidget {
@@ -19,6 +21,18 @@ class _ClientsPageState extends ModularState<ClientsPage, ClientsController> {
     final bool useMobileLayout = shortestSide < 600;
     final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddClient()),
+            );
+          },
+        ),
+      ),
       appBar: AppBar(
         leading: Icon(Icons.chevron_left),
         bottomOpacity: 0.0,
@@ -188,10 +202,10 @@ class MyMenu extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => ViewClient()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ViewClient()),
+          );
         },
         splashColor: Colors.blue[50],
         child: Center(

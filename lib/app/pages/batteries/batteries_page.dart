@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'batteries_controller.dart';
 import 'battery_name.dart';
+import 'view_battery.dart';
 
 class BatteriesPage extends StatefulWidget {
   final String title;
@@ -217,7 +218,12 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+           Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ViewBattery()),
+          );
+        },
         splashColor: Colors.blue[50],
         child: Center(
           child: Column(

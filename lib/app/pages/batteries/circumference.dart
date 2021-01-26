@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'batteries_controller.dart';
 import 'battery_name.dart';
-import 'body_composition.dart';
-import 'circumference.dart';
 
-class SelectTest extends StatefulWidget {
+class Circumference extends StatefulWidget {
   final String title;
-  const SelectTest({Key key, this.title = "Select Test"}) : super(key: key);
+  const Circumference({Key key, this.title = "Circumference"})
+      : super(key: key);
 
   @override
-  _SelectTestState createState() => _SelectTestState();
+  _CircumferenceState createState() => _CircumferenceState();
 }
 
-class _SelectTestState extends ModularState<SelectTest, BatteriesController> {
+class _CircumferenceState
+    extends ModularState<Circumference, BatteriesController> {
   //use 'controller' variable to access controller
 
   @override
@@ -35,14 +35,14 @@ class _SelectTestState extends ModularState<SelectTest, BatteriesController> {
           widget.title,
           style: TextStyle(color: Colors.grey),
         ),
-        //       actions: <Widget>[
-        //   FlatButton(
-        //     textColor: Colors.white,
-        //     onPressed: () {},
-        //     child: Text("Save"),
-        //     shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-        //   ),
-        // ],
+              actions: <Widget>[
+          FlatButton(
+            textColor: Colors.blue,
+            onPressed: () {},
+            child: Text("Save"),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
+        ],
       ),
       body: useMobileLayout
           ? buildPhoneGridView(orientation: orientation)
@@ -51,65 +51,75 @@ class _SelectTestState extends ModularState<SelectTest, BatteriesController> {
     );
   }
 
-  GridView buildPhoneGridView({@required Orientation orientation}) {
-    return GridView.count(
-      padding: EdgeInsets.all(20),
-      crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+  ListView buildPhoneGridView({@required Orientation orientation}) {
+    return ListView(
+      padding: EdgeInsets.all(0),
       children: <Widget>[
+        Container(
+            height: 50,
+            padding: EdgeInsets.all(14),
+            color: Colors.blue,
+            child: Text('ACSM',
+                style: TextStyle(color: Colors.white, fontSize: 17))),
         MyMenu(
-            title: "Body Composition",
+            title: "Abdomen",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenutwo(
-            title: "Circumference",
+            title: "Straight Knee Foot Raised",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenuthree(
-            title: "Cardiovascular",
+            title: "Wrist",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
+        Container(
+            height: 50,
+            padding: EdgeInsets.all(14),
+            color: Colors.blue,
+            child: Text('Bony Stractures',
+                style: TextStyle(color: Colors.white, fontSize: 17))),
         MyMenufour(
-            title: "Flexibility/Mobility",
+            title: "Wrist",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenufive(
-            title: "Mascular Power",
+            title: "Knee",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenusix(
-            title: "Speed",
+        MyMenufive(
+            title: "Knee",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
     );
   }
 
-  GridView buildTabletGridView({@required Orientation orientation}) {
-    return GridView.count(
-      crossAxisCount: orientation == Orientation.portrait ? 4 : 5,
+  ListView buildTabletGridView({@required Orientation orientation}) {
+    return ListView(
       children: <Widget>[
         MyMenu(
-            title: "Body Composition",
+            title: "Abdomen",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenutwo(
-            title: "Circumference",
+            title: "Straight Knee Foot Raised",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenuthree(
-            title: "Cardiovascular",
+            title: "Wrist",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenufour(
-            title: "Flexibility/Mobility",
+            title: "Wrist",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenufive(
-            title: "Mascular Power",
+            title: "Knee",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenusix(
-            title: "Speed",
+        MyMenufive(
+            title: "Knee",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
@@ -206,15 +216,10 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => BodyComposition()),
-          );
-        },
+        onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -239,15 +244,10 @@ class MyMenutwo extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Circumference()),
-          );
-        },
+        onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -274,8 +274,8 @@ class MyMenuthree extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -302,8 +302,8 @@ class MyMenufour extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -330,36 +330,8 @@ class MyMenufive extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenusix extends StatelessWidget {
-  MyMenusix({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),

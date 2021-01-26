@@ -5,7 +5,7 @@ import 'battery_name.dart';
 
 class BodyComposition extends StatefulWidget {
   final String title;
-  const BodyComposition({Key key, this.title = "Select Test"}) : super(key: key);
+  const BodyComposition({Key key, this.title = "Body Composition"}) : super(key: key);
 
   @override
   _BodyCompositionState createState() => _BodyCompositionState();
@@ -33,14 +33,14 @@ class _BodyCompositionState extends ModularState<BodyComposition, BatteriesContr
           widget.title,
           style: TextStyle(color: Colors.grey),
         ),
-        //       actions: <Widget>[
-        //   FlatButton(
-        //     textColor: Colors.white,
-        //     onPressed: () {},
-        //     child: Text("Save"),
-        //     shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-        //   ),
-        // ],
+              actions: <Widget>[
+          FlatButton(
+            textColor: Colors.blue,
+            onPressed: () {},
+            child: Text("Save"),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
+        ],
       ),
       body: useMobileLayout
           ? buildPhoneGridView(orientation: orientation)
@@ -49,67 +49,57 @@ class _BodyCompositionState extends ModularState<BodyComposition, BatteriesContr
     );
   }
 
-  GridView buildPhoneGridView({@required Orientation orientation}) {
-    return GridView.count(
-      padding: EdgeInsets.all(20),
-      crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+  ListView buildPhoneGridView({@required Orientation orientation}) {
+    return ListView(
+      padding: EdgeInsets.all(5),
       children: <Widget>[
         MyMenu(
-            title: "Body Composition",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenutwo(
-            title: "Circumference",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenuthree(
-            title: "Cardiovascular",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufour(
-            title: "Flexibility/Mobility",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Mascular Power",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenusix(
-            title: "Speed",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
+                        title: "Body Weight",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenutwo(
+                        title: "Height",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenuthree(
+                        title: "BMI",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenufour(
+                        title: "Waist / Body Weight",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenufive(
+                        title: "Waist Circumference",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
       ],
     );
   }
 
-  GridView buildTabletGridView({@required Orientation orientation}) {
-    return GridView.count(
-      crossAxisCount: orientation == Orientation.portrait ? 4 : 5,
+  ListView buildTabletGridView({@required Orientation orientation}) {
+    return ListView(
       children: <Widget>[
         MyMenu(
-            title: "Body Composition",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenutwo(
-            title: "Circumference",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenuthree(
-            title: "Cardiovascular",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufour(
-            title: "Flexibility/Mobility",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Mascular Power",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenusix(
-            title: "Speed",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
+                        title: "Body Weight",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenutwo(
+                        title: "Height",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenuthree(
+                        title: "BMI",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenufour(
+                        title: "Waist / Body Weight",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenufive(
+                        title: "Waist Circumference",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
       ],
     );
   }
@@ -204,15 +194,10 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => BodyComposition()),
-          // );
-        },
+        onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -237,15 +222,10 @@ class MyMenutwo extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => CircumferenceT()),
-          // );
-        },
+        onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -257,7 +237,6 @@ class MyMenutwo extends StatelessWidget {
     );
   }
 }
-
 class MyMenuthree extends StatelessWidget {
   MyMenuthree({this.title, this.icon, this.warna});
 
@@ -272,8 +251,8 @@ class MyMenuthree extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -300,8 +279,8 @@ class MyMenufour extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
@@ -328,36 +307,8 @@ class MyMenufive extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenusix extends StatelessWidget {
-  MyMenusix({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
+        child: Container(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(icon, size: 70.0, color: warna),
