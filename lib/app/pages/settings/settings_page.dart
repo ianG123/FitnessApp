@@ -26,7 +26,6 @@ class _SettingsPageState
         leading: Icon(Icons.chevron_left),
         bottomOpacity: 0.0,
         elevation: 0.0,
-        // leading: Icon(Icons.chevron_left),
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),

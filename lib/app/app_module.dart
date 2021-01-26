@@ -1,4 +1,6 @@
 import 'package:prototype/app/modules/login/login_page.dart';
+import 'package:prototype/app/pages/batteries/batteries_controller.dart';
+import 'package:prototype/app/pages/clients/clients_controller.dart';
 import 'package:prototype/app/pages/home/home_controller.dart';
 import 'package:prototype/app/pages/settings/settings_controller.dart';
 
@@ -21,6 +23,8 @@ import 'modules/signup/signup_controller.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => BatteriesController()),
+        Bind((i) => ClientsController()),
         Bind((i) => SettingsController()),
         Bind((i) => HomeController()),
         Bind((i) => GrouptabController()),

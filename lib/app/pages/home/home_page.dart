@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:prototype/app/modules/batteriesdashboard/batteriesdashboard_page.dart';
 import 'package:prototype/app/modules/clientdashboard/clientdashboard_page.dart';
+import 'package:prototype/app/pages/batteries/batteries_page.dart';
+import 'package:prototype/app/pages/clients/clients_page.dart';
 import 'package:prototype/app/pages/settings/settings_page.dart';
 import 'home_controller.dart';
 
@@ -184,7 +186,7 @@ class MyMenu extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ClientdashboardPage()),
+            MaterialPageRoute(builder: (context) => ClientsPage()),
           );
         },
         splashColor: Colors.blue[50],
@@ -250,7 +252,7 @@ class Batteries extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => BatteriesdashboardPage()),
+            MaterialPageRoute(builder: (context) => BatteriesPage()),
           );
         },
         splashColor: Colors.blue[50],
