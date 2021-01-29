@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:prototype/app/modules/clientdashboard/viewClient.dart';
-import 'add_client.dart';
-import 'clients_controller.dart';
+import 'group_add.dart';
+import 'locations.dart';
+import 'settings_controller.dart';
+import 'terms.dart';
 
-class ClientsPage extends StatefulWidget {
+class GroupPage extends StatefulWidget {
   final String title;
-  const ClientsPage({Key key, this.title = "Clients"}) : super(key: key);
+  const GroupPage({Key key, this.title = "Groups"}) : super(key: key);
 
   @override
-  _ClientsPageState createState() => _ClientsPageState();
+  _GroupPageState createState() => _GroupPageState();
 }
 
-class _ClientsPageState extends ModularState<ClientsPage, ClientsController> {
+class _GroupPageState extends ModularState<GroupPage, SettingsController> {
   //use 'controller' variable to access controller
 
   @override
@@ -21,18 +22,6 @@ class _ClientsPageState extends ModularState<ClientsPage, ClientsController> {
     final bool useMobileLayout = shortestSide < 600;
     final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AddClient()),
-            );
-          },
-        ),
-      ),
       appBar: AppBar(
         leading: Icon(Icons.chevron_left),
         bottomOpacity: 0.0,
@@ -46,14 +35,14 @@ class _ClientsPageState extends ModularState<ClientsPage, ClientsController> {
           widget.title,
           style: TextStyle(color: Colors.grey),
         ),
-        //       actions: <Widget>[
-        //   FlatButton(
-        //     textColor: Colors.white,
-        //     onPressed: () {},
-        //     child: Text("Save"),
-        //     shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-        //   ),
-        // ],
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () {},
+            child: Text("Save"),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
+        ],
       ),
       body: useMobileLayout
           ? buildPhoneGridView(orientation: orientation)
@@ -62,50 +51,40 @@ class _ClientsPageState extends ModularState<ClientsPage, ClientsController> {
     );
   }
 
-  GridView buildPhoneGridView({@required Orientation orientation}) {
-    return GridView.count(
-      padding: EdgeInsets.all(20),
-      crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+  ListView buildPhoneGridView({@required Orientation orientation}) {
+    return ListView(
+      padding: EdgeInsets.all(5),
       children: <Widget>[
         MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
+            title: "Groups",
+            icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
+        MyMenutwo(
+            title: "Locations",
+            icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
-            warna: Colors.blue),
-        MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
+        MyMenuthree(
+            title: "Terms",
+            icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
     );
   }
 
-  GridView buildTabletGridView({@required Orientation orientation}) {
-    return GridView.count(
-      crossAxisCount: orientation == Orientation.portrait ? 4 : 5,
+  ListView buildTabletGridView({@required Orientation orientation}) {
+    return ListView(
       children: <Widget>[
-        MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
+         MyMenu(
+            title: "Groups",
+            icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
+        MyMenutwo(
+            title: "Locations",
+            icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
-            warna: Colors.blue),
-        MyMenu(
-            title: "Clients",
-            icon: Icons.account_circle_rounded,
+        MyMenuthree(
+            title: "Terms",
+            icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
     );
@@ -202,39 +181,84 @@ class MyMenu extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          Navigator.push(
+           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ViewClient()),
+            MaterialPageRoute(builder: (context) => GroupAdd()),
           );
         },
         splashColor: Colors.blue[50],
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        child: Container(
+          padding: EdgeInsets.all(15),
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Row(
-                  children: <Widget>[
-                    Icon(icon, size: 60.0, color: warna),
-                    SizedBox(
-                      width: 30,
-                    ),
-                    Icon(icon, size: 40.0, color: warna),
-                  ],
-                ),
-              ),
-              SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Text('John\nRobert', style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
-              ),
-              SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, top: 5, bottom: 10),
-                child: Text('Primary Group', style: new TextStyle(fontSize: 12.0)),
-              ),
+              Text(title, style: new TextStyle(fontSize: 16.0)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyMenutwo extends StatelessWidget {
+  MyMenutwo({this.title, this.icon, this.warna});
+
+  final String title;
+  final IconData icon;
+  final MaterialColor warna;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Locations()),
+          );
+        },
+        splashColor: Colors.blue[50],
+        child: Container(
+          padding: EdgeInsets.all(15),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(title, style: new TextStyle(fontSize: 16.0)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyMenuthree extends StatelessWidget {
+  MyMenuthree({this.title, this.icon, this.warna});
+
+  final String title;
+  final IconData icon;
+  final MaterialColor warna;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TermsPage()),
+          );
+        },
+        splashColor: Colors.blue[50],
+        child: Container(
+          padding: EdgeInsets.all(15),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(title, style: new TextStyle(fontSize: 16.0)),
             ],
           ),
         ),

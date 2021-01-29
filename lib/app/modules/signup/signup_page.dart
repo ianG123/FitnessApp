@@ -134,7 +134,6 @@ class _SignupPageState extends ModularState<SignupPage, SignupController> {
                   child: new Container(
                       margin: const EdgeInsets.only(left: 20.0, right: 50.0),
                       child: Divider(
-                        color: Colors.black,
                         height: 36,
                       )),
                 ),
