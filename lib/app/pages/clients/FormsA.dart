@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'batteries_controller.dart';
-import 'battery_name.dart';
+import 'clients_controller.dart';
+import 'goalsA.dart';
 
-class ViewBattery extends StatefulWidget {
+class FormsA extends StatefulWidget {
   final String title;
-  const ViewBattery({Key key, this.title = "View Battery"}) : super(key: key);
+  const FormsA({Key key, this.title = "09/14/20 Forms"}) : super(key: key);
 
   @override
-  _ViewBatteryState createState() => _ViewBatteryState();
+  _FormsAState createState() => _FormsAState();
 }
 
-class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
+class _FormsAState extends ModularState<FormsA, ClientsController> {
   //use 'controller' variable to access controller
 
   @override
@@ -20,6 +20,18 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
     final bool useMobileLayout = shortestSide < 600;
     final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => AddClient()),
+            // );
+          },
+        ),
+      ),
       appBar: AppBar(
         leading: Icon(Icons.chevron_left),
         bottomOpacity: 0.0,
@@ -34,7 +46,12 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
           style: TextStyle(color: Colors.grey),
         ),
         actions: <Widget>[
-          PopUpOptionMenu(),
+          FlatButton(
+            textColor: Colors.blue,
+            onPressed: () {},
+            child: Text("Delete"),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
         ],
       ),
       body: useMobileLayout
@@ -43,46 +60,35 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
       bottomNavigationBar: Botnav(),
     );
   }
-  
 
   ListView buildPhoneGridView({@required Orientation orientation}) {
     return ListView(
       padding: EdgeInsets.all(0),
       children: <Widget>[
-        Container(
-            height: 50,
-            padding: EdgeInsets.all(14),
-            color: Colors.blue,
-            child: Text('Body Composition',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
         MyMenu(
-            title: "Body Weight",
+            title: "Goals",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenutwo(
-            title: "Jackson-Pollock 3-Pinch Body Fat",
+            title: "Curent Activity & Interests",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        Container(
+        MyMenuthree(
+            title: "Current Diet",
+            icon: Icons.blur_circular_outlined,
+            warna: Colors.blue),
+       Container(
             height: 50,
             padding: EdgeInsets.all(14),
             color: Colors.blue,
-            child: Text('Circumference',
+            child: Text('Informed Consent',
                 style: TextStyle(color: Colors.white, fontSize: 17))),
         MyMenufour(
-            title: "Body Weight",
+            title: "Fitness Testing Consent Form",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenufive(
-            title: "Jackson-Pollock 3-Pinch Body Fat",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Body Weight",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Jackson-Pollock 3-Pinch Body Fat",
+            title: "Fitness Testing and Exercise Part",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
@@ -93,57 +99,32 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
     return ListView(
       children: <Widget>[
         MyMenu(
-            title: "Abdomen",
+            title: "Goals",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenutwo(
-            title: "Straight Knee Foot Raised",
+            title: "Curent Activity & Interests",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenuthree(
-            title: "Wrist",
+            title: "Current Diet",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
+         Container(
+            height: 50,
+            padding: EdgeInsets.all(14),
+            color: Colors.blue,
+            child: Text('Informed Consent',
+                style: TextStyle(color: Colors.white, fontSize: 17))),
         MyMenufour(
-            title: "Wrist",
+            title: "Fitness Testing Consent Form",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenufive(
-            title: "Knee",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Knee",
+            title: "Fitness Testing and Exercise Part",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
-    );
-  }
-}
-
-enum MenuOption{Save, Draft, Discard}
-
-class PopUpOptionMenu extends StatelessWidget {
-  const PopUpOptionMenu({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton<MenuOption>(
-      itemBuilder: (BuildContext context){
-        return <PopupMenuEntry<MenuOption>>[
-          PopupMenuItem(
-            child: Text('Save'),
-            value: MenuOption.Save,
-          ),
-          PopupMenuItem(
-            child: Text('Draft'),
-            value: MenuOption.Draft,
-          ),
-          PopupMenuItem(
-            child: Text('Discard'),
-            value: MenuOption.Discard,
-          )
-        ];
-      }
     );
   }
 }
@@ -237,13 +218,19 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GoalsA()),
+                        );
+        },
         splashColor: Colors.blue[50],
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -271,7 +258,8 @@ class MyMenutwo extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -280,7 +268,6 @@ class MyMenutwo extends StatelessWidget {
     );
   }
 }
-
 class MyMenuthree extends StatelessWidget {
   MyMenuthree({this.title, this.icon, this.warna});
 
@@ -299,7 +286,8 @@ class MyMenuthree extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -327,7 +315,8 @@ class MyMenufour extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
@@ -355,7 +344,8 @@ class MyMenufive extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
               Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),

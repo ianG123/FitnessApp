@@ -7,6 +7,7 @@ import 'package:prototype/app/modules/settingsdashbaord/settingsdashbaord_page.d
 import 'package:prototype/app/modules/signup/signup_page.dart';
 import 'package:prototype/app/pages/home/home_page.dart';
 import 'login_controller.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;

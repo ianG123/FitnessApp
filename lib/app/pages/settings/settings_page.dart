@@ -270,7 +270,12 @@ class GroupTab extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Clients.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),
@@ -372,7 +377,12 @@ class Locationpage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Edit-3.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),
@@ -474,7 +484,12 @@ class DateFormat extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Edit-4.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),
@@ -606,7 +621,12 @@ class LocSettings extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Edit-5.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),

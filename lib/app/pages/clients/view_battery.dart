@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'batteries_controller.dart';
-import 'battery_name.dart';
+import 'FormsA.dart';
+import 'clients_controller.dart';
+import 'goalsB.dart';
 
 class ViewBattery extends StatefulWidget {
   final String title;
-  const ViewBattery({Key key, this.title = "View Battery"}) : super(key: key);
+  const ViewBattery({Key key, this.title = "View Battery 1"}) : super(key: key);
 
   @override
   _ViewBatteryState createState() => _ViewBatteryState();
 }
 
-class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
+class _ViewBatteryState extends ModularState<ViewBattery, ClientsController> {
   //use 'controller' variable to access controller
 
-  @override
+   @override
   Widget build(BuildContext context) {
     final double shortestSide = MediaQuery.of(context).size.shortestSide;
     final bool useMobileLayout = shortestSide < 600;
@@ -34,7 +35,12 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
           style: TextStyle(color: Colors.grey),
         ),
         actions: <Widget>[
-          PopUpOptionMenu(),
+          FlatButton(
+            textColor: Colors.blue,
+            onPressed: () {},
+            child: Text("Select"),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
         ],
       ),
       body: useMobileLayout
@@ -77,7 +83,34 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+      ],
+    );
+  }
+
+  ListView buildTabletGridView({@required Orientation orientation}) {
+    return ListView(
+      children: <Widget>[
+        Container(
+            height: 50,
+            padding: EdgeInsets.all(14),
+            color: Colors.blue,
+            child: Text('Body Composition',
+                style: TextStyle(color: Colors.white, fontSize: 17))),
+        MyMenu(
+            title: "Body Weight",
+            icon: Icons.blur_circular_outlined,
+            warna: Colors.blue),
+        MyMenutwo(
+            title: "Jackson-Pollock 3-Pinch Body Fat",
+            icon: Icons.blur_circular_outlined,
+            warna: Colors.blue),
+        Container(
+            height: 50,
+            padding: EdgeInsets.all(14),
+            color: Colors.blue,
+            child: Text('Circumference',
+                style: TextStyle(color: Colors.white, fontSize: 17))),
+        MyMenufour(
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -88,65 +121,8 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
       ],
     );
   }
-
-  ListView buildTabletGridView({@required Orientation orientation}) {
-    return ListView(
-      children: <Widget>[
-        MyMenu(
-            title: "Abdomen",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenutwo(
-            title: "Straight Knee Foot Raised",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenuthree(
-            title: "Wrist",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufour(
-            title: "Wrist",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Knee",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Knee",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-      ],
-    );
-  }
 }
 
-enum MenuOption{Save, Draft, Discard}
-
-class PopUpOptionMenu extends StatelessWidget {
-  const PopUpOptionMenu({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton<MenuOption>(
-      itemBuilder: (BuildContext context){
-        return <PopupMenuEntry<MenuOption>>[
-          PopupMenuItem(
-            child: Text('Save'),
-            value: MenuOption.Save,
-          ),
-          PopupMenuItem(
-            child: Text('Draft'),
-            value: MenuOption.Draft,
-          ),
-          PopupMenuItem(
-            child: Text('Discard'),
-            value: MenuOption.Discard,
-          )
-        ];
-      }
-    );
-  }
-}
 
 class Botnav extends StatefulWidget {
   @override

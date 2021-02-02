@@ -63,7 +63,8 @@ GridView buildPhoneGridView({@required Orientation orientation}) {
     crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
     children: <Widget>[
       MyMenu(
-          title: "Clients", icon: Icons.people_alt_rounded, warna: Colors.blue),
+        title: "Clients",
+      ),
       Batteries(
           title: "Batteries",
           icon: Icons.battery_alert_outlined,
@@ -81,7 +82,8 @@ GridView buildTabletGridView({@required Orientation orientation}) {
     crossAxisCount: orientation == Orientation.portrait ? 4 : 5,
     children: <Widget>[
       MyMenu(
-          title: "Clients", icon: Icons.people_alt_rounded, warna: Colors.blue),
+        title: "Clients",
+      ),
       Batteries(
           title: "Batteries",
           icon: Icons.battery_alert_outlined,
@@ -117,9 +119,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -134,7 +136,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -172,9 +174,10 @@ class _BotnavState extends State<Botnav> {
 }
 
 class MyMenu extends StatelessWidget {
-  MyMenu({this.title, this.icon, this.warna});
+  MyMenu({this.title, this.icon, this.warna, this.icona});
 
   final String title;
+  final ImageIcon icona;
   final IconData icon;
   final MaterialColor warna;
 
@@ -194,7 +197,12 @@ class MyMenu extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Clients.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),
@@ -227,7 +235,12 @@ class Settings extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Settings.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),
@@ -260,7 +273,12 @@ class Batteries extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/heart beat pulse.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),

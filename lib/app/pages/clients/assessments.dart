@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'batteries_controller.dart';
-import 'battery_name.dart';
+import 'package:prototype/app/pages/batteries/batteries_page.dart';
+import 'package:prototype/app/pages/clients/view_battery.dart';
+import 'FormsA.dart';
+import 'clients_controller.dart';
+import 'goalsB.dart';
 
-class ViewBattery extends StatefulWidget {
+class Assessments extends StatefulWidget {
   final String title;
-  const ViewBattery({Key key, this.title = "View Battery"}) : super(key: key);
+  const Assessments({Key key, this.title = "Assessments"}) : super(key: key);
 
   @override
-  _ViewBatteryState createState() => _ViewBatteryState();
+  _AssessmentsState createState() => _AssessmentsState();
 }
 
-class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
+class _AssessmentsState extends ModularState<Assessments, ClientsController> {
   //use 'controller' variable to access controller
 
   @override
@@ -20,6 +23,18 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
     final bool useMobileLayout = shortestSide < 600;
     final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BatteriesPage()),
+            );
+          },
+        ),
+      ),
       appBar: AppBar(
         leading: Icon(Icons.chevron_left),
         bottomOpacity: 0.0,
@@ -33,8 +48,13 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
           widget.title,
           style: TextStyle(color: Colors.grey),
         ),
-        actions: <Widget>[
-          PopUpOptionMenu(),
+              actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () {},
+            child: Text("Save"),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
         ],
       ),
       body: useMobileLayout
@@ -43,48 +63,31 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
       bottomNavigationBar: Botnav(),
     );
   }
-  
 
   ListView buildPhoneGridView({@required Orientation orientation}) {
     return ListView(
-      padding: EdgeInsets.all(0),
+      padding: EdgeInsets.all(5),
       children: <Widget>[
-        Container(
-            height: 50,
-            padding: EdgeInsets.all(14),
-            color: Colors.blue,
-            child: Text('Body Composition',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
         MyMenu(
-            title: "Body Weight",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenutwo(
-            title: "Jackson-Pollock 3-Pinch Body Fat",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        Container(
-            height: 50,
-            padding: EdgeInsets.all(14),
-            color: Colors.blue,
-            child: Text('Circumference',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
-        MyMenufour(
-            title: "Body Weight",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Jackson-Pollock 3-Pinch Body Fat",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Body Weight",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Jackson-Pollock 3-Pinch Body Fat",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenutwo(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenuthree(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenufour(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenufive(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
       ],
     );
   }
@@ -93,57 +96,26 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
     return ListView(
       children: <Widget>[
         MyMenu(
-            title: "Abdomen",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenutwo(
-            title: "Straight Knee Foot Raised",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenuthree(
-            title: "Wrist",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufour(
-            title: "Wrist",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Knee",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenufive(
-            title: "Knee",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenutwo(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenuthree(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenufour(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
+                    MyMenufive(
+                        title: "09/14/2020",
+                        icon: Icons.assignment_outlined,
+                        warna: Colors.blue),
       ],
-    );
-  }
-}
-
-enum MenuOption{Save, Draft, Discard}
-
-class PopUpOptionMenu extends StatelessWidget {
-  const PopUpOptionMenu({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton<MenuOption>(
-      itemBuilder: (BuildContext context){
-        return <PopupMenuEntry<MenuOption>>[
-          PopupMenuItem(
-            child: Text('Save'),
-            value: MenuOption.Save,
-          ),
-          PopupMenuItem(
-            child: Text('Draft'),
-            value: MenuOption.Draft,
-          ),
-          PopupMenuItem(
-            child: Text('Discard'),
-            value: MenuOption.Discard,
-          )
-        ];
-      }
     );
   }
 }
@@ -237,14 +209,27 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ViewBattery()),
+                        );
+        },
         splashColor: Colors.blue[50],
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+              
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -271,8 +256,16 @@ class MyMenutwo extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+               
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -280,7 +273,6 @@ class MyMenutwo extends StatelessWidget {
     );
   }
 }
-
 class MyMenuthree extends StatelessWidget {
   MyMenuthree({this.title, this.icon, this.warna});
 
@@ -299,8 +291,16 @@ class MyMenuthree extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+               
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -327,8 +327,16 @@ class MyMenufour extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+              
+              Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),
@@ -355,8 +363,16 @@ class MyMenufive extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+               
+             Icon(icon, size: 60.0, color: warna),
+              SizedBox(width: 20,),
+              Column(
+                children: [
+                  Text(title, style: new TextStyle(fontSize: 14.0)),
+                   SizedBox(height: 5,),
+                  Text('Battery 1', style: new TextStyle(fontSize: 14.0)),
+                ],
+              ),
             ],
           ),
         ),

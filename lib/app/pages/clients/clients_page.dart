@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:prototype/app/modules/clientdashboard/viewClient.dart';
 import 'add_client.dart';
 import 'clients_controller.dart';
+import 'view_client.dart';
 
 class ClientsPage extends StatefulWidget {
   final String title;
