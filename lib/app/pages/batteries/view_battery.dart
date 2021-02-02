@@ -33,9 +33,6 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
           widget.title,
           style: TextStyle(color: Colors.grey),
         ),
-        actions: <Widget>[
-          PopUpOptionMenu(),
-        ],
       ),
       body: useMobileLayout
           ? buildPhoneGridView(orientation: orientation)
@@ -59,7 +56,7 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -69,19 +66,19 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
             color: Colors.blue,
             child: Text('Circumference',
                 style: TextStyle(color: Colors.white, fontSize: 17))),
-        MyMenufour(
+        MyMenu(
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -96,23 +93,23 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
             title: "Abdomen",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "Straight Knee Foot Raised",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenuthree(
+        MyMenu(
             title: "Wrist",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufour(
+        MyMenu(
             title: "Wrist",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Knee",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Knee",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -121,32 +118,6 @@ class _ViewBatteryState extends ModularState<ViewBattery, BatteriesController> {
   }
 }
 
-enum MenuOption{Save, Draft, Discard}
-
-class PopUpOptionMenu extends StatelessWidget {
-  const PopUpOptionMenu({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton<MenuOption>(
-      itemBuilder: (BuildContext context){
-        return <PopupMenuEntry<MenuOption>>[
-          PopupMenuItem(
-            child: Text('Save'),
-            value: MenuOption.Save,
-          ),
-          PopupMenuItem(
-            child: Text('Draft'),
-            value: MenuOption.Draft,
-          ),
-          PopupMenuItem(
-            child: Text('Discard'),
-            value: MenuOption.Discard,
-          )
-        ];
-      }
-    );
-  }
-}
 
 class Botnav extends StatefulWidget {
   @override
@@ -171,9 +142,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -188,7 +159,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -205,7 +176,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -240,123 +211,20 @@ class MyMenu extends StatelessWidget {
         onTap: () {},
         splashColor: Colors.blue[50],
         child: Container(
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenutwo extends StatelessWidget {
-  MyMenutwo({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenuthree extends StatelessWidget {
-  MyMenuthree({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufour extends StatelessWidget {
-  MyMenufour({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufive extends StatelessWidget {
-  MyMenufive({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+              Image(
+                  image: AssetImage("assets/Web.png"),
+                  width: 70,
+                  height: 70,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+              SizedBox(
+                width: 15,
+              ),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
             ],
           ),
         ),

@@ -135,9 +135,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -152,7 +152,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -169,7 +169,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -217,11 +217,21 @@ class MyMenu extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 12),
                 child: Row(
                   children: <Widget>[
-                    Icon(icon, size: 60.0, color: warna),
+                     Image(
+                  image: AssetImage("assets/Profile.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
                     SizedBox(
                       width: 30,
                     ),
-                    Icon(icon, size: 40.0, color: warna),
+                     Image(
+                  image: AssetImage("assets/32.png"),
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
                   ],
                 ),
               ),

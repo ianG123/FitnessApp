@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'group_add.dart';
-import 'locations.dart';
-import 'settings_controller.dart';
-import 'terms.dart';
+import 'FormsA.dart';
+import 'clients_controller.dart';
+import 'view_prescription.dart';
 
-class GroupPage extends StatefulWidget {
+class Prescriptions extends StatefulWidget {
   final String title;
-  const GroupPage({Key key, this.title = "Groups"}) : super(key: key);
+  const Prescriptions({Key key, this.title = "Prescriptions"}) : super(key: key);
 
   @override
-  _GroupPageState createState() => _GroupPageState();
+  _PrescriptionsState createState() => _PrescriptionsState();
 }
 
-class _GroupPageState extends ModularState<GroupPage, SettingsController> {
+class _PrescriptionsState extends ModularState<Prescriptions, ClientsController> {
   //use 'controller' variable to access controller
 
   @override
@@ -22,6 +21,18 @@ class _GroupPageState extends ModularState<GroupPage, SettingsController> {
     final bool useMobileLayout = shortestSide < 600;
     final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => AddClient()),
+            // );
+          },
+        ),
+      ),
       appBar: AppBar(
         leading: Icon(Icons.chevron_left),
         bottomOpacity: 0.0,
@@ -56,16 +67,24 @@ class _GroupPageState extends ModularState<GroupPage, SettingsController> {
       padding: EdgeInsets.all(5),
       children: <Widget>[
         MyMenu(
-            title: "Groups",
-            icon: Icons.blur_circular_outlined,
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenutwo(
-            title: "Locations",
-            icon: Icons.blur_circular_outlined,
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenuthree(
-            title: "Terms",
-            icon: Icons.blur_circular_outlined,
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
+            warna: Colors.blue),
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
+            warna: Colors.blue),
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
             warna: Colors.blue),
       ],
     );
@@ -74,17 +93,25 @@ class _GroupPageState extends ModularState<GroupPage, SettingsController> {
   ListView buildTabletGridView({@required Orientation orientation}) {
     return ListView(
       children: <Widget>[
-         MyMenu(
-            title: "Groups",
-            icon: Icons.blur_circular_outlined,
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenutwo(
-            title: "Locations",
-            icon: Icons.blur_circular_outlined,
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenuthree(
-            title: "Terms",
-            icon: Icons.blur_circular_outlined,
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
+            warna: Colors.blue),
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
+            warna: Colors.blue),
+        MyMenu(
+            title: "09/14/2020",
+            icon: Icons.folder_open_outlined,
             warna: Colors.blue),
       ],
     );
@@ -131,13 +158,13 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.settings),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
               ),
               Text(
-                'Settings',
+                'Clients',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
@@ -181,84 +208,36 @@ class MyMenu extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-           Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => GroupAdd()),
-          );
-        },
-        splashColor: Colors.blue[50],
-        child: Container(
-          padding: EdgeInsets.all(15),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(title, style: new TextStyle(fontSize: 16.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenutwo extends StatelessWidget {
-  MyMenutwo({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {
           Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Locations()),
-          );
+                          context,
+                          MaterialPageRoute(builder: (context) => ViewPrescription()),
+                        );
         },
         splashColor: Colors.blue[50],
         child: Container(
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(title, style: new TextStyle(fontSize: 16.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenuthree extends StatelessWidget {
-  MyMenuthree({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => TermsPage()),
-          );
-        },
-        splashColor: Colors.blue[50],
-        child: Container(
-          padding: EdgeInsets.all(15),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(title, style: new TextStyle(fontSize: 16.0)),
+               Image(
+                  image: AssetImage("assets/Folder.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+              SizedBox(
+                width: 20,
+              ),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+              SizedBox(
+                width: 140,
+              ),
+               Image(
+                  image: AssetImage("assets/32.png"),
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
             ],
           ),
         ),

@@ -128,9 +128,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -145,13 +145,13 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: Icon(Icons.settings),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
               ),
               Text(
-                'Clients',
+                'Settings',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
@@ -162,7 +162,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},

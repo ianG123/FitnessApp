@@ -132,9 +132,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -166,7 +166,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -204,8 +204,13 @@ class MyMenu extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 17.0)),
+              Image(
+                  image: AssetImage("assets/g10.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+              Text(title, style: new TextStyle(fontSize: 15.0,), textAlign: TextAlign.center,),
             ],
           ),
         ),
@@ -237,7 +242,12 @@ class Businesstab extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Bsness.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               Text(title, style: new TextStyle(fontSize: 17.0)),
             ],
           ),

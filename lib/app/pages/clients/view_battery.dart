@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'FormsA.dart';
 import 'clients_controller.dart';
+import 'fitness_test.dart';
 import 'goalsB.dart';
 
 class ViewBattery extends StatefulWidget {
@@ -37,7 +38,12 @@ class _ViewBatteryState extends ModularState<ViewBattery, ClientsController> {
         actions: <Widget>[
           FlatButton(
             textColor: Colors.blue,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => FitnessTest()),
+                        );
+            },
             child: Text("Select"),
             shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
           ),
@@ -59,13 +65,19 @@ class _ViewBatteryState extends ModularState<ViewBattery, ClientsController> {
             height: 50,
             padding: EdgeInsets.all(14),
             color: Colors.blue,
-            child: Text('Body Composition',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
+            child: Row(
+              children: [
+                Icon(Icons.blur_circular_outlined,color: Colors.white,),
+                SizedBox(width: 20,),
+                Text('Body Composition',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
         MyMenu(
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -73,13 +85,19 @@ class _ViewBatteryState extends ModularState<ViewBattery, ClientsController> {
             height: 50,
             padding: EdgeInsets.all(14),
             color: Colors.blue,
-            child: Text('Circumference',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
-        MyMenufour(
+            child: Row(
+              children: [
+                Icon(Icons.blur_circular_outlined,color: Colors.white,),
+                SizedBox(width: 20,),
+                Text('Circumference',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
+        MyMenu(
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -94,27 +112,39 @@ class _ViewBatteryState extends ModularState<ViewBattery, ClientsController> {
             height: 50,
             padding: EdgeInsets.all(14),
             color: Colors.blue,
-            child: Text('Body Composition',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
+            child: Row(
+              children: [
+                Icon(Icons.blur_circular_outlined,color: Colors.white,),
+                SizedBox(width: 20,),
+                Text('Body Composition',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
         MyMenu(
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        Container(
+       Container(
             height: 50,
             padding: EdgeInsets.all(14),
             color: Colors.blue,
-            child: Text('Circumference',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
-        MyMenufour(
+            child: Row(
+              children: [
+                Icon(Icons.blur_circular_outlined,color: Colors.white,),
+                SizedBox(width: 20,),
+                Text('Circumference',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
+        MyMenu(
             title: "Body Weight",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Jackson-Pollock 3-Pinch Body Fat",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -147,9 +177,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -164,7 +194,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -181,7 +211,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -216,123 +246,18 @@ class MyMenu extends StatelessWidget {
         onTap: () {},
         splashColor: Colors.blue[50],
         child: Container(
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenutwo extends StatelessWidget {
-  MyMenutwo({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenuthree extends StatelessWidget {
-  MyMenuthree({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufour extends StatelessWidget {
-  MyMenufour({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufive extends StatelessWidget {
-  MyMenufive({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+               Image(
+                  image: AssetImage("assets/Web.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+                  SizedBox(width: 15,),
+              Text(title, style: new TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold)),
             ],
           ),
         ),

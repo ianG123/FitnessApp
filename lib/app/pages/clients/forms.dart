@@ -69,19 +69,19 @@ class _FormsPageState extends ModularState<FormsPage, ClientsController> {
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenuthree(
+        MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenufour(
+        MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenufive(
+       MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
@@ -96,19 +96,19 @@ class _FormsPageState extends ModularState<FormsPage, ClientsController> {
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenuthree(
+        MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenufour(
+        MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
-        MyMenufive(
+       MyMenu(
             title: "09/14/2020",
             icon: Icons.folder_open_outlined,
             warna: Colors.blue),
@@ -140,9 +140,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -157,7 +157,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -174,7 +174,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -214,18 +214,29 @@ class MyMenu extends StatelessWidget {
         },
         splashColor: Colors.blue[50],
         child: Container(
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
+               Image(
+                  image: AssetImage("assets/Folder.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               SizedBox(
                 width: 20,
               ),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
               SizedBox(
                 width: 140,
               ),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
+               Image(
+                  image: AssetImage("assets/32.png"),
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
             ],
           ),
         ),
@@ -234,142 +245,3 @@ class MyMenu extends StatelessWidget {
   }
 }
 
-class MyMenutwo extends StatelessWidget {
-  MyMenutwo({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(
-                width: 20,
-              ),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(
-                width: 140,
-              ),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenuthree extends StatelessWidget {
-  MyMenuthree({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(
-                width: 20,
-              ),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(
-                width: 140,
-              ),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufour extends StatelessWidget {
-  MyMenufour({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(
-                width: 20,
-              ),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(
-                width: 140,
-              ),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufive extends StatelessWidget {
-  MyMenufive({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(
-                width: 20,
-              ),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-              SizedBox(
-                width: 140,
-              ),
-              Icon(Icons.radio_button_off, size: 40.0, color: warna),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

@@ -69,11 +69,11 @@ class _FormsAState extends ModularState<FormsA, ClientsController> {
             title: "Goals",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "Curent Activity & Interests",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenuthree(
+        MyMenu(
             title: "Current Diet",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -83,11 +83,11 @@ class _FormsAState extends ModularState<FormsA, ClientsController> {
             color: Colors.blue,
             child: Text('Informed Consent',
                 style: TextStyle(color: Colors.white, fontSize: 17))),
-        MyMenufour(
+        MyMenu(
             title: "Fitness Testing Consent Form",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Fitness Testing and Exercise Part",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -102,11 +102,11 @@ class _FormsAState extends ModularState<FormsA, ClientsController> {
             title: "Goals",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenutwo(
+        MyMenu(
             title: "Curent Activity & Interests",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenuthree(
+        MyMenu(
             title: "Current Diet",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -116,11 +116,11 @@ class _FormsAState extends ModularState<FormsA, ClientsController> {
             color: Colors.blue,
             child: Text('Informed Consent',
                 style: TextStyle(color: Colors.white, fontSize: 17))),
-        MyMenufour(
+        MyMenu(
             title: "Fitness Testing Consent Form",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
-        MyMenufive(
+        MyMenu(
             title: "Fitness Testing and Exercise Part",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
@@ -152,9 +152,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -169,7 +169,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -186,7 +186,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -226,12 +226,18 @@ class MyMenu extends StatelessWidget {
         },
         splashColor: Colors.blue[50],
         child: Container(
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
+              Image(
+                  image: AssetImage("assets/Web.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
               SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
             ],
           ),
         ),
@@ -240,117 +246,3 @@ class MyMenu extends StatelessWidget {
   }
 }
 
-class MyMenutwo extends StatelessWidget {
-  MyMenutwo({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-class MyMenuthree extends StatelessWidget {
-  MyMenuthree({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufour extends StatelessWidget {
-  MyMenufour({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyMenufive extends StatelessWidget {
-  MyMenufive({this.title, this.icon, this.warna});
-
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue[50],
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(icon, size: 60.0, color: warna),
-              SizedBox(width: 20,),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

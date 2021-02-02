@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'batteries_controller.dart';
-import 'battery_name.dart';
+import 'FormsA.dart';
+import 'clients_controller.dart';
+import 'estimate_calorie.dart';
+import 'fitness_test.dart';
+import 'goalsB.dart';
 
-class Circumference extends StatefulWidget {
+class ViewPrescription extends StatefulWidget {
   final String title;
-  const Circumference({Key key, this.title = "Circumference"})
-      : super(key: key);
+  const ViewPrescription({Key key, this.title = "09/14/20"}) : super(key: key);
 
   @override
-  _CircumferenceState createState() => _CircumferenceState();
+  _ViewPrescriptionState createState() => _ViewPrescriptionState();
 }
 
-class _CircumferenceState
-    extends ModularState<Circumference, BatteriesController> {
+class _ViewPrescriptionState
+    extends ModularState<ViewPrescription, ClientsController> {
   //use 'controller' variable to access controller
 
   @override
@@ -35,11 +37,16 @@ class _CircumferenceState
           widget.title,
           style: TextStyle(color: Colors.grey),
         ),
-              actions: <Widget>[
+        actions: <Widget>[
           FlatButton(
             textColor: Colors.blue,
-            onPressed: () {},
-            child: Text("Save"),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FitnessTest()),
+              );
+            },
+            child: Text("delete"),
             shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
           ),
         ],
@@ -59,36 +66,58 @@ class _CircumferenceState
             height: 50,
             padding: EdgeInsets.all(14),
             color: Colors.blue,
-            child: Text('ACSM',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.blur_circular_outlined,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text('Diet Prescription',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
         MyMenu(
-            title: "Abdomen",
+            title: "Estimated Calorie Requirements",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenu(
-            title: "Straight Knee Foot Raised",
+            title: "Calories & Macronutrients",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenu(
-            title: "Wrist",
+            title: "Food Exchange",
+            icon: Icons.blur_circular_outlined,
+            warna: Colors.blue),
+        MyMenu(
+            title: "Activity & Meal Plan",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         Container(
             height: 50,
             padding: EdgeInsets.all(14),
             color: Colors.blue,
-            child: Text('Bony Stractures',
-                style: TextStyle(color: Colors.white, fontSize: 17))),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.blur_circular_outlined,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text('Exercise Prescription',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
         MyMenu(
-            title: "Wrist",
+            title: "Exercise Calories Burned",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenu(
-            title: "Knee",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenu(
-            title: "Knee",
+            title: "Steps to Distance Converter",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
@@ -98,28 +127,62 @@ class _CircumferenceState
   ListView buildTabletGridView({@required Orientation orientation}) {
     return ListView(
       children: <Widget>[
+        Container(
+            height: 50,
+            padding: EdgeInsets.all(14),
+            color: Colors.blue,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.blur_circular_outlined,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text('Diet Prescription',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
         MyMenu(
-            title: "Abdomen",
+            title: "Estimated Calorie Requirements",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenu(
-            title: "Straight Knee Foot Raised",
+            title: "Calories & Macronutrients",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenu(
-            title: "Wrist",
+            title: "Food Exchange",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenu(
-            title: "Wrist",
+            title: "Activity & Meal Plan",
+            icon: Icons.blur_circular_outlined,
+            warna: Colors.blue),
+        Container(
+            height: 50,
+            padding: EdgeInsets.all(14),
+            color: Colors.blue,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.blur_circular_outlined,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text('Exercise Prescription',
+                    style: TextStyle(color: Colors.white, fontSize: 17)),
+              ],
+            )),
+        MyMenu(
+            title: "Exercise Calories Burned",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
         MyMenu(
-            title: "Knee",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenu(
-            title: "Knee",
+            title: "Steps to Distance Converter",
             icon: Icons.blur_circular_outlined,
             warna: Colors.blue),
       ],
@@ -216,7 +279,12 @@ class MyMenu extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+           Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EstimateCalorie()),
+                        );
+        },
         splashColor: Colors.blue[50],
         child: Container(
           padding: EdgeInsets.all(5),
@@ -224,15 +292,13 @@ class MyMenu extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Image(
-                  image: AssetImage("assets/Web.png"),
-                  width: 70,
-                  height: 70,
+                  image: AssetImage("assets/Folder.png"),
+                  width: 60,
+                  height: 60,
                   fit: BoxFit.scaleDown,
                   alignment: FractionalOffset.center),
-              SizedBox(
-                width: 15,
-              ),
-              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+                  SizedBox(width: 15,),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.blue)),
             ],
           ),
         ),

@@ -4,6 +4,7 @@ import 'assessments.dart';
 import 'clients_controller.dart';
 import 'edit_client.dart';
 import 'forms.dart';
+import 'prescription.dart';
 
 class ViewClient extends StatefulWidget {
   final String title;
@@ -85,11 +86,12 @@ class _FormsState extends State<Forms> {
             Center(
               child: Column(
                 children: <Widget>[
-                  Icon(
-                    Icons.person_pin,
-                    color: Colors.blue,
-                    size: 100,
-                  ),
+                  Image(
+                  image: AssetImage("assets/304.png"),
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
                   SizedBox(height: 5),
                   Text(
                     'John Robbert',
@@ -274,9 +276,9 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.home),
+                icon: new Image.asset("assets/Vector.png"),
                 color: Colors.white,
-                iconSize: 36,
+                iconSize: 30,
                 onPressed: () {},
               ),
               Text(
@@ -291,7 +293,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.people_alt_rounded),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -308,7 +310,7 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.info_outline),
+                icon: new Image.asset("assets/Group (1).png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
@@ -341,18 +343,25 @@ class MyMenuThree extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          // Navigator.push(
-          //                 context,
-          //                 MaterialPageRoute(builder: (context) => PrescriptionPage()),
-          //               );
+          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Prescriptions()),
+                        );
         },
         splashColor: Colors.blue[50],
         child: Container(
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+               Image(
+                  image: AssetImage("assets/pres.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+                  SizedBox(width: 20,),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
             ],
           ),
         ),
@@ -381,11 +390,18 @@ class MyMenutwo extends StatelessWidget {
         },
         splashColor: Colors.blue[50],
         child: Container(
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+               Image(
+                  image: AssetImage("assets/assess.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+                  SizedBox(width: 20,),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
             ],
           ),
         ),
@@ -414,11 +430,18 @@ class MyMenu extends StatelessWidget {
         },
         splashColor: Colors.blue[50],
         child: Container(
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(icon, size: 70.0, color: warna),
-              Text(title, style: new TextStyle(fontSize: 14.0)),
+             Image(
+                  image: AssetImage("assets/Folder.png"),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+                  SizedBox(width: 20,),
+              Text(title, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
             ],
           ),
         ),

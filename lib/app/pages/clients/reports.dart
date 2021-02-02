@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'group_add.dart';
-import 'locations.dart';
-import 'settings_controller.dart';
-import 'terms.dart';
+import 'FormsA.dart';
+import 'chartComparison.dart';
+import 'chart_report.dart';
+import 'clients_controller.dart';
+import 'goalsB.dart';
+import 'text_report.dart';
 
-class GroupPage extends StatefulWidget {
+class Reports extends StatefulWidget {
   final String title;
-  const GroupPage({Key key, this.title = "Groups"}) : super(key: key);
+  const Reports({Key key, this.title = "Reports"}) : super(key: key);
 
   @override
-  _GroupPageState createState() => _GroupPageState();
+  _ReportsState createState() => _ReportsState();
 }
 
-class _GroupPageState extends ModularState<GroupPage, SettingsController> {
+class _ReportsState extends ModularState<Reports, ClientsController> {
   //use 'controller' variable to access controller
 
   @override
@@ -35,14 +37,14 @@ class _GroupPageState extends ModularState<GroupPage, SettingsController> {
           widget.title,
           style: TextStyle(color: Colors.grey),
         ),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () {},
-            child: Text("Save"),
-            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-          ),
-        ],
+        //       actions: <Widget>[
+        //   FlatButton(
+        //     textColor: Colors.white,
+        //     onPressed: () {},
+        //     child: Text("Save"),
+        //     shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+        //   ),
+        // ],
       ),
       body: useMobileLayout
           ? buildPhoneGridView(orientation: orientation)
@@ -50,45 +52,47 @@ class _GroupPageState extends ModularState<GroupPage, SettingsController> {
       bottomNavigationBar: Botnav(),
     );
   }
+}
 
-  ListView buildPhoneGridView({@required Orientation orientation}) {
-    return ListView(
-      padding: EdgeInsets.all(5),
-      children: <Widget>[
-        MyMenu(
-            title: "Groups",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenutwo(
-            title: "Locations",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenuthree(
-            title: "Terms",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-      ],
-    );
-  }
+GridView buildPhoneGridView({@required Orientation orientation}) {
+  return GridView.count(
+    padding: EdgeInsets.all(20),
+    crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+    children: <Widget>[
+     MyMenu(
+                        title: "Chart Report",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenutwo(
+                        title: "Comparison Report",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenuthree(
+                        title: "Text Report",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+    ],
+  );
+}
 
-  ListView buildTabletGridView({@required Orientation orientation}) {
-    return ListView(
-      children: <Widget>[
-         MyMenu(
-            title: "Groups",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenutwo(
-            title: "Locations",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-        MyMenuthree(
-            title: "Terms",
-            icon: Icons.blur_circular_outlined,
-            warna: Colors.blue),
-      ],
-    );
-  }
+GridView buildTabletGridView({@required Orientation orientation}) {
+  return GridView.count(
+    crossAxisCount: orientation == Orientation.portrait ? 4 : 5,
+    children: <Widget>[
+     MyMenu(
+                        title: "Chart Report",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenutwo(
+                        title: "Comparison Report",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+                    MyMenuthree(
+                        title: "Text Report",
+                        icon: Icons.blur_circular_outlined,
+                        warna: Colors.blue),
+    ],
+  );
 }
 
 class Botnav extends StatefulWidget {
@@ -131,13 +135,13 @@ class _BotnavState extends State<Botnav> {
           Column(
             children: [
               IconButton(
-                icon: Icon(Icons.settings),
+                icon: new Image.asset("assets/Group.png"),
                 color: Colors.white,
                 iconSize: 36,
                 onPressed: () {},
               ),
               Text(
-                'Settings',
+                'Clients',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
@@ -168,6 +172,8 @@ class _BotnavState extends State<Botnav> {
   }
 }
 
+
+
 class MyMenu extends StatelessWidget {
   MyMenu({this.title, this.icon, this.warna});
 
@@ -181,18 +187,24 @@ class MyMenu extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-           Navigator.push(
+          Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => GroupAdd()),
+            MaterialPageRoute(builder: (context) => ChartsDemo()),
           );
         },
         splashColor: Colors.blue[50],
-        child: Container(
-          padding: EdgeInsets.all(15),
-          child: Row(
+        child: Center(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(title, style: new TextStyle(fontSize: 16.0)),
+              Image(
+                  image: AssetImage("assets/graph.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+                  SizedBox(width: 20,),
+              Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
         ),
@@ -216,16 +228,22 @@ class MyMenutwo extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Locations()),
+            MaterialPageRoute(builder: (context) => ChartComparison()),
           );
         },
         splashColor: Colors.blue[50],
-        child: Container(
-          padding: EdgeInsets.all(15),
-          child: Row(
+        child: Center(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(title, style: new TextStyle(fontSize: 16.0)),
+              Image(
+                  image: AssetImage("assets/graph.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+                  SizedBox(width: 20,),
+              Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
         ),
@@ -233,7 +251,6 @@ class MyMenutwo extends StatelessWidget {
     );
   }
 }
-
 class MyMenuthree extends StatelessWidget {
   MyMenuthree({this.title, this.icon, this.warna});
 
@@ -247,18 +264,24 @@ class MyMenuthree extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          Navigator.push(
+           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => TermsPage()),
+            MaterialPageRoute(builder: (context) => TextReport()),
           );
         },
         splashColor: Colors.blue[50],
-        child: Container(
-          padding: EdgeInsets.all(15),
-          child: Row(
+        child: Center(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(title, style: new TextStyle(fontSize: 16.0)),
+              Image(
+                  image: AssetImage("assets/TextR.png"),
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.scaleDown,
+                  alignment: FractionalOffset.center),
+                  SizedBox(width: 20,),
+              Text(title, style: new TextStyle(fontSize: 14.0)),
             ],
           ),
         ),
